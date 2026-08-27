@@ -1,3 +1,8 @@
+# Tarea sesión 1
+# Profesor Jerónimo Roberto Miranda
+# Tópicos que más me interesaron/llamaron la atención del libro Bioinformatics
+# Algorithms.
+
 El libro en general me gustó mucho, especialmente los títulos que justo hacen 
 que la lectura sea más ligera e interesante. Los capítulos que más me 
 llamaron la atención fueron: Which DNA patterns play the role of molecular 
