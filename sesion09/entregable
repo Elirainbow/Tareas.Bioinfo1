@@ -1,0 +1,36 @@
+Un párrafo por familia sobre dónde los dos métodos no se pusieron de acuerdo y por qué: dos regiones concretas, con posiciones en la secuencia de 
+referencia (RSPO2_human, LGR5_human), diciendo si coinciden con las letras de baja confianza de MUSCLE5 y con lo que recortó trimal.
+
+Cada familia:
+rspo:
+De acuerdo al ejercicio 5, las regiones donde existe más desacuerdo entre los métodos para la familia rspo son: péptido señal (aminoácidos 1-21),
+ enlace N (aminoácidos 22-39) y c-terminal (aminoácidos 204-243). MUSCLE5 sí coincide con esto; al observar el ensemble sí se observa el mismo patrón 
+donde hay regiones entre 1-39 y 204-243 donde el acuerdo es notablemente menor. Como se puede ver en la tabla de abajo, en efecto las regiones donde 
+trimal eliminó más residuos son las tenían mayor desacuerdo entre los métodos.  
+
+Dominio	Acuerdo_medio	LC_medio	Eliminados
+Peptido_senal	0.489	8.238	10
+Enlace_N	0.497	8.667	6
+FU1_FU2	0.987	9.000	3
+TSP1	0.992	9.000	0
+Cola_C	0.350	7.850	17
+Sin_dominio	0.961	9.000	1
+
+lgr:
+De acuerdo al ejercicio 5, las regiones donde existe más desacuerdo entre los métodos para la familia lgr son: LRR (aminoácidos 1-453), 
+bisagra (aminoácidos 454-572) y c-terminal (aminoácidos 820-906). EN este caso las letras de baja confianza en MUSCLE5 también siguen un patró similar;
+la primera mitad (como del 1-500 precisamente), la confianza es súper baja, luego luego mejora considerablemente (coincidiendo com la parte 7TM con 
+0.96 de acuerdo medio) y termina por dezplomarse de nuevo al final (que coindide con el c-terminal). Como se puede Como se puede ver en la tabla de 
+abajo, las regiones donde trimal eliminó más residuos sí coinciden con las que tenían mayor desacuerdo entre los métodos. 
+
+Dominio	Acuerdo_medio	LC_medio	Eliminados
+LRR	0.606	7.156	357
+Bisagra	0.782	7.462	87
+7TM	0.958	8.947	32
+Cola_C	0.401	4.655	82
+
+Una frase para un compañero de biología o de neurociencias que les pregunte si está bien poner en su tesis el .dnd de clustal como la filogenia de 
+su gen: 
+Poner el .dnd de clustal como la filogenia no sería correcto ya que este es una guía que utilzia el algoritmo y que se contruye en base a los perfiles
+de k-meros de cada secuencia, no es un alineamiento para encontrar el parentezco. No te va adar la información que necesitas para hacer una filogenia, 
+por lo que basarte en eso te llevaría a asunciones erróneas sobre las relaciones entre tus secuencias. 
