@@ -1,0 +1,766 @@
+---
+title: "Tarea 1: Entrega de ejercicios de Introducción a R"
+author: "Elizabeth Jiménez Meráz"
+format:
+  pdf:
+    toc: true
+    toc-depth: 3
+editor: visual
+---
+
+# 2. Introducción a R
+
+## 2.11
+
+Instrucciones: Actividad: comprobar que el entorno está listo 1.
+
+1.  Abre RStudio Desktop.
+2.  Ejecuta `R.version.string` y `Sys.info()[["sysname"]]`.
+
+```{r}
+R.version.string
+```
+
+```{r}
+Sys.info()[["sysname"]]
+```
+
+2.  Comprueba que `ggplot2` y `dplyr` están instalados; si no lo están, instálalos desde CRAN.
+
+    ```{r}
+    "ggplot2" %in% rownames(installed.packages())
+    ```
+
+    ```{r}
+    "dplyr" %in% rownames(installed.packages())
+    ```
+
+    Sí están instalados.
+
+3.  Carga ambos paquetes y consulta sus versiones.
+
+    ```{r}
+    library(ggplot2)
+    library(dplyr)
+    ```
+
+    ```{r}
+    packageVersion("ggplot2")
+    ```
+
+    ```{r}
+    packageVersion("dplyr")
+    ```
+
+    La versión de `ggplot2` instalada en mi R es: 4.0.3 y la de `dplyr` es: 1.2.1
+
+4.  Identifica las herramientas de compilación correspondientes a tu sistema operativo. En Windows, comprueba especialmente la compatibilidad de Rtools.
+
+    ```{r}
+    # install.packages("pkgbuild")
+
+    pkgbuild::has_build_tools(debug = TRUE)
+    ```
+
+La función usada verifica automáticamente el sistema operativo y confirma si existen los compiladores necesarios (como Rtools o Xcode) o qué es exactamente lo que falta instalar. Linux es mi sistema operativo, sí tengo las herramientas de compilación necesarias.
+
+# 3. Objetos y estructuras de datos en R
+
+## 3.2.1
+
+Ejercicio 1. Vectores y selección
+
+```{r}
+# Crear los vectores:
+ids <- c("g1", "g2", "g3", "g4", "g5")
+tam <- c(90, 450, 310, 120, 600)
+```
+
+1.  Selecciona el tercer identificador.
+
+```{r}
+ids[3]
+```
+
+2.  Recupera los identificadores de genes con longitud de al menos 300.
+
+```{r}
+ids[tam >= 300]
+```
+
+3.  Cuenta cuántos cumplen esa condición sin usar un ciclo.
+
+```{r}
+sum(tam >= 300)
+```
+
+## 3.2.4
+
+Ejercicio 2: Factores
+
+Crea una vector con las letras A M A B M M B A B B, donde A significa Alto, B bajo y M medio. Convierte las entradas del vector a factores y especifica que A \> M \> B.
+
+```{r}
+letras <- c("A", "M", "A", "B", "M", "M", "B", "A", "B", "B")
+letras2 <- factor(c("A", "M", "A", "B", "M", "M", "B", "A", "B", "B"), levels = c("A", "M", "B")) # siempre el que escribes primero es el que toma como el más grande y viceverza
+letras2
+```
+
+## 3.2.5
+
+Ejercicio 3: Elegir estructuras
+
+1.  Construye un `data.frame` con tres genes, sus longitudes y una etiqueta funcional.
+
+```{r}
+Ejercicio3.df <- data.frame(gen = c("g1", "g2", "g3"),
+                            longitud = c(501, 100, 267),
+                            funcion = c("enzima", "arnm", "arnr"))
+```
+
+2.  Recupera únicamente las filas con longitud mayor que 200.
+
+```{r}
+mayor200 <- Ejercicio3.df[Ejercicio3.df$longitud>200,]
+mayor200
+```
+
+3.  Crea una lista que contenga la tabla y el identificador de una muestra.
+
+```{r}
+Ejercicio3.ls <- list(muestra = "Muestra_1", genes = Ejercicio3.df)
+Ejercicio3.ls
+```
+
+4.  Explica por qué una matriz de caracteres no sería una buena sustitución para la tabla cuando queremos conservar longitudes numéricas.
+
+    Una matriz no sería la mejor opción porque solo conserva elementos del mismo tipo, y dado que en la tabla tenemos caracteres y numéricos, los numéricos (que en este caso representan la longitud del gen) se convertirían a caracteres. De esta forma ya no son útiles para hacer comparaciones y por ejemplo "filtrar" lo que son más grandes o pequeños que cierta cantidad.
+
+# 4. Estructuras de control
+
+## 4.1.1
+
+Ejercicio 1: Clasificación de un valor
+
+Define una variable conteo que represente el número de lecturas asignadas a un gen. Escribe un condicional que imprima:
+
+-   "Dato faltante" si el valor es `NA`.
+-   "Conteo inválido" si es negativo.
+-   "Sin lecturas" si es cero.
+-   "Con lecturas" si es positivo.
+
+Prueba tu código con `NA`, `-2`, `0` y `15`.
+
+```{r}
+conteo <- NA
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ": Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+```
+
+```{r}
+conteo <- -2
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ": Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+```
+
+```{r}
+conteo <- 0
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ": Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+```
+
+```{r}
+conteo <- 15
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ": Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+```
+
+## 4.1.2
+
+Ejercicio 2. Verificación de conteos
+
+Considera el vector `conteos <- c(8, 0, 13, 5, 0, 21)`. Utiliza las funciones anteriores para:
+
+1.  Verificar si todos los valores son no negativos.
+
+```{r}
+conteos <- c(8, 0, 13, 5, 0, 21)
+any(conteos == 0)
+```
+
+2.  Determinar si existe al menos un conteo mayor que 20.
+
+```{r}
+any(conteos > 20)
+```
+
+3.  Obtener las posiciones de los conteos iguales a cero.
+
+```{r}
+which(conteos == 0)
+```
+
+4.  Crear un vector que indique "Presente" o "Ausente" según si el conteo es mayor que cero.
+
+```{r}
+estado <- ifelse(conteos > 0, "Presente", "Ausente")
+estado
+```
+
+## 4.2.2
+
+Ejercicio 3. Longitudes de secuencias
+
+A partir del vector: Código
+
+```{r}
+secuencias <- c("ATG", "ATGCGT", "AATTCCGG", "CG")
+```
+
+1.  Utiliza un ciclo `for` para guardar las longitudes en un vector llamado `longitudes`.
+
+```{r}
+longitudes <- numeric(length(secuencias))
+for (i in seq_along(secuencias)){
+  longitudes[i] <- nchar(secuencias[i])
+}
+```
+
+2.  Crea otro vector llamado `clasificacion` que contenga "Corta" para longitudes menores que 5 y "Larga" para longitudes de al menos 5.
+
+```{r}
+clasif <- numeric(length(secuencias))
+
+for (i in seq_along(longitudes)){
+  if (longitudes[i] < 5){
+    clasif[i] <- "corta"
+    }
+    else if (longitudes[i] >= 5){
+      clasif[i] <- "larga"
+    }
+}
+```
+
+3.  Muestra ambos vectores.
+
+```{r}
+longitudes
+```
+
+```{r}
+clasif
+```
+
+## 4.3.2
+
+Ejercicio 4. Alcanzar una longitud
+
+Imagina que estamos construyendo una secuencia mediante la adición de un nucleótido "A" en cada iteración. Escribe un ciclo `while` que comience con una cadena vacía y se detenga cuando la secuencia alcance 8 nucleótidos. Muestra el resultado final.
+
+```{r}
+cadena <- c("A")
+limite2 <- 8
+longitud <- nchar(cadena)
+
+while (longitud < limite2){
+  cadena = paste0(cadena, "A")
+  longitud = nchar(cadena)
+}
+cat("Cadena final:", cadena)
+```
+
+# 5. Funciones en R
+
+## 5.1.1
+
+Ejercicio 1: Función 1
+
+Escribe una función llamada `empieza_con` que reciba una secuencia y un prefijo, y determine si la secuencia comienza con ese prefijo. Pruébala con "ATGCGT" y los prefijos "ATG" y "TGA".
+
+```{r}
+empieza_con <- function(secuencia, prefijo){
+  startsWith(secuencia, prefijo)
+}
+secuencia = "ATGCGT"
+prefijo = "ATG"
+empieza_con(secuencia, prefijo)
+```
+
+## 5.3
+
+Ejercicio 2: Función 2
+
+Modifica `resumir_adn()` para que también devuelva la proporción de nucleótidos G y C respecto de la longitud total. Prueba la función con una secuencia no vacía.
+
+```{r}
+resumir_adn <- function(id, secuencia){
+  secuencia <- toupper(secuencia)
+  longitud <- nchar(secuencia)
+  basesg <- strsplit(secuencia, "G", fixed = TRUE)
+  basesc <- strsplit(secuencia, "C", fixed = TRUE)
+  longitudc <- length(basesc)
+  longitudg <- length(basesg)
+  longitud_gc <- longitudg + longitudc
+  gc <- longitud_gc / longitud
+
+  list(id = id,
+       longitud = longitud,
+       porcentaej_gc = gc)
+}
+```
+
+```{r}
+resumir_adn("gen1", "ATGC")
+```
+
+## 5.5
+
+Ejercicio 3: Función 3
+
+Crea una función llamada `clasificar_secuencias` que reciba un vector de secuencias y devuelva una lista con dos elementos:
+
+-   `validas`: las secuencias formadas únicamente por A, C, G y T.
+-   `invalidas`: las secuencias que contienen otros caracteres o valores faltantes.
+
+Utiliza la función `revisar_secuencias()` del ejemplo anterior.
+
+```{r}
+revisar_secuencias <- function(secuencias) {
+  # Creamos el vector de resultados lógico (FALSE) de longitud n
+  resultado <- logical(length(secuencias))
+
+  for (i in seq_along(secuencias)) {
+    # Extraemos la secuencia i y la guardamos en secuencia temporalmente
+    secuencia <- secuencias[i]
+
+    if (is.na(secuencia)) {
+      # si es vacía asignamos FALSE
+      resultado[i] <- FALSE
+    } else {
+      # si no es vacía, verificamos que si lo contenga A, C, G o T
+      resultado[i] <- grepl("^[ACGT]+$", toupper(secuencia))
+    }
+  }
+  resultado
+}
+```
+
+```{r}
+secuencias <- c("ATGCGT", "ACNTGA", "ttacga", NA)
+revisar_secuencias(secuencias)
+```
+
+```{r}
+#Función clasificar_secuencias
+clasificar_secuencias <- function(secuencias){
+  stopifnot(is.character(secuencias))
+
+  es_valida <- revisar_secuencias(secuencias)
+
+  lista.v <- list(
+    validas = secuencias[es_valida],
+    invalidas = secuencias[!es_valida])
+  lista.v
+}
+```
+
+```{r}
+clasificar_secuencias(c("AT", "GC", "", 3))
+```
+
+## 5.6
+
+Ejercicio 4
+
+Un archivo de secuencias ha sido representado en R mediante dos vectores:
+
+```{r}
+ids <- c("seq_01", "seq_02", "seq_03", "seq_04")
+secuencias <- c("ATGCGT", "ACNTGA", "GGCCAA", "TTTAAA")
+```
+
+Escribe una función `crear_reporte_secuencias(ids, secuencias)` que:
+
+1.  Compruebe que ambos argumentos son vectores de caracteres y tienen la misma longitud.
+2.  Identifique las secuencias válidas mediante `revisar_secuencias()`.
+3.  Devuelva un `data.frame` con las columnas `id`, `secuencia`, `longitud` y `valida`.
+4.  Asigne `NA` a la longitud de las secuencias inválidas.
+
+```{r}
+# rm(list = ls())
+crear_reporte_secuencias <- function(ids, secuencias){
+
+  if (class(ids) != "character" & class(secuencias) != "character"){
+    stop("Por favor ingresa ids y secuencias del tipo caracter") }
+  else if (length(ids) != length(secuencias)) {
+    stop("Por favor ingresa la misma cantidad de secuencias que de ids")}
+  else{
+    es_valida <- revisar_secuencias(secuencias)
+    tipo_secuencia <- clasificar_secuencias(secuencias)
+
+    DF <- data.frame(id = ids,
+                     secuencias = secuencias,
+                     longitud = nchar(secuencias),
+                     validez = ifelse(es_valida, "válida", "inválida"))}
+  DF
+}
+```
+
+```{r}
+crear_reporte_secuencias(ids, secuencias)
+```
+
+# 6. Scripts, paquetes y proyectos de RStudio
+
+## 6.5
+
+Ejercicio 1
+
+Considera el siguiente código, guardado en un archivo llamado `revision.R`:
+
+``` r
+longitudes <- nchar(secuencias)
+resultado <- data.frame(id = ids, longitud = longitudes)
+print(resultado)
+```
+
+Un estudiante afirma que el archivo funciona porque obtuvo una tabla al ejecutarlo en su computadora.
+
+1.  ¿Por qué podría fallar si otra persona abre el archivo y lo ejecuta desde una sesión nueva de R?
+
+    Porque el código llama a una variable llamada secuencias y otra llamada ids, pero nunca las declara. Esto signfica que el código por sí solo al correrse puede provocar 2 cosas:
+
+    1.  Que de error al no encontrr las variables
+    2.  Que arroje un resultado pero tomando las variables declaras localmente en la computadora de la otra persona, dando un resultado diferente al que se planeó inicialmente (a menos que las variables llamadas contengan la misma información que las que vivían en la computadora donde se escribió y ejecutó el código originalmente).
+
+2.  ¿Cómo se puede modificar el script para que pueda ejecutarse completo sin depender de objetos creados previamente en la consola?
+
+    Lo principal es que se pueden declarar las variables y la información que deberían de tener en el mismo script, para no depender del entorno local del creador del script.
+
+# 7. Importación y exploración de datos bioinformáticos en R
+
+## 7.3.2
+
+Ejercicio 1: Reconocer un archivo antes de importarlo
+
+Sin abrirlo en una hoja de cálculo, utiliza R para comprobar que existe `blast_separador_incorrecto.csv`, mostrar sus tres primeras líneas y determinar qué separador utiliza realmente.
+
+```{r}
+B <- read.csv("~/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_sesion_02_blast/blast_separador_incorrecto.csv")
+```
+
+```{r}
+# comprobar que existe blast_separador_incorrecto.csv
+## hay dos formas: listando los archivos de la carpeta o preguntando directamente si el archivo está:
+list.files("/home/ejimenez/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_sesion_02_blast")
+```
+
+```{r}
+file.exists("/home/ejimenez/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_sesion_02_blast/blast_separador_incorrecto.csv")
+```
+
+```{r}
+# mostrar 3 primeras líneas:
+readLines("~/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_sesion_02_blast/blast_separador_incorrecto.csv", n = 3)
+```
+
+Determinar qué separador usa realmente:
+
+Viendo las primeras líneas puedo ver que el separador son tabs (`\t`), no comas.
+
+## 7.4.4
+
+Ejercicio 2: Elegir la función adecuada
+
+Importa `metadata_secuencias.csv` y `blast_comentarios.tsv` utilizando `readr`. Conserva `codigo_muestra` como texto. Comprueba la clase de cada objeto y muestra sus primeras filas.
+
+```{r}
+library(readr)
+# metadata_secuencias.csv
+
+metadata <- readr::read_csv(
+  "data_raw/datos_sesion_02_blast/metadata_secuencias.csv",
+  col_types = readr::cols(codigo_muestra = readr::col_character()),
+  show_col_types = FALSE
+)
+
+# blast_comentarios.tsv
+blast <- readr::read_tsv(
+  "data_raw/datos_sesion_02_blast/resultados_blast.tsv",
+  show_col_types = FALSE
+)
+```
+
+```{r}
+cat("clase del archivo de metadata:", class(metadata), "\n")
+```
+
+```{r}
+head(metadata)
+```
+
+```{r}
+cat("clase del archivo de blast:", class(blast), "\n")
+```
+
+```{r}
+head(blast)
+```
+
+## 7.5.4
+
+Ejercicio 3: Explorar resultados tipo BLAST
+
+Con `resultados_blast.tsv`, responde mediante código:
+
+¿Cuántos registros y columnas tiene la tabla?
+
+```{r}
+resultados_blast <- read_tsv("/home/ejimenez/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_sesion_02_blast/resultados_blast.tsv")
+```
+
+```{r}
+cat("número de registros:", nrow(resultados_blast), "\n")
+```
+
+```{r}
+cat("número de columnas:", ncol(resultados_blast))
+```
+
+Hay 20 registros y 6 columnas en el archivo.
+
+¿Cuántos `query_id` diferentes aparecen?
+
+```{r}
+head(resultados_blast)
+```
+
+```{r}
+length(unique(resultados_blast$query_id))
+```
+
+Hay 8 `query_id` diferentes.
+
+¿Cuántos resultados tiene cada consulta?
+
+```{r}
+head(resultados_blast)
+```
+
+Hay 4 resultados por consulta: pident, length, evalue, bitscore.
+
+¿Qué filas tienen `pident` mayor o igual a 95?
+
+```{r}
+filas_95 <- which(resultados_blast$pident >= 95)
+cat("Las filas con pident mayor o igual a 95 son:", which(resultados_blast$pident >= 95))
+```
+
+```{r}
+resultados_blast[filas_95, ]
+```
+
+¿Hay valores faltantes?
+
+```{r}
+anyNA(resultados_blast)
+```
+
+No, no hay.
+
+## 7.6.3
+
+Ejercicio 4: Detectar un problema de lectura
+
+Un estudiante importa `blast_separador_incorrecto.csv` con `read_csv()` y obtiene una sola columna. ¿Significa que el archivo contiene una única variable? Explica cómo comprobarlo y corrige la importación.
+
+El hecho de que haya obtenido una sola columna no implica que el archivo contiene una sola variable, sino que la función con la que se importó no identificó ningun separador de tipo coma (","), por lo tanto no separó las variables.
+
+Podemos comprobarlo viendo las primeras filas, y podemos corregirlo con un `read_tsv()`, ya que viendo las primeras filas se ve que el separador en realidad es una tabulación.
+
+## 7.7
+
+Ejercicio 5: Reconocer secuencias en FASTA
+
+Utiliza `readLines()` y `grep()` para identificar los encabezados de `secuencias.fasta`.
+
+```{r}
+secuencias.fasta <- readLines("/home/ejimenez/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_sesion_02_blast/secuencias.fasta")
+secuencias.fasta[grep('>', secuencias.fasta )]
+```
+
+¿Cuántas entradas FASTA contiene el archivo?
+
+Hay 8 encabezados, por lo tanto 8 entradas FASTA.
+
+Muestra únicamente sus encabezados.
+
+```{r}
+encabezados <- secuencias.fasta[grep('>', secuencias.fasta )]
+length(encabezados)
+```
+
+```{r}
+print(encabezados)
+```
+
+## 7.8
+
+Ejercicio 6: De los archivos a una descripción de los datos
+
+Crea un script llamado `02_exploracion.R` dentro de tu proyecto. El script debe:
+
+1.  Comprobar que existen `resultados_blast.tsv`, `metadata_secuencias.csv` y `secuencias.fasta`.
+2.  Importar las dos tablas con `readr` y conservar `codigo_muestra` como texto.
+3.  Mostrar dimensiones, nombres y tipos de columnas.
+4.  Identificar los `query_id` distintos y contar los resultados por consulta.
+5.  Mostrar las filas con `pident >= 90` y explicar qué representa este filtro.
+6.  Leer el FASTA e indicar cuántos encabezados contiene.
+7.  Mostrar si alguna de las tablas tiene valores faltantes.
+
+Escribe al final del script, como comentarios, tres observaciones sobre la estructura de los datos, sin extraer conclusiones biológicas.
+
+-   El script se encuentra en mi repositorio de github, en la misma carpeta donde existe este archivo.
+
+# 8. Manipulación y transformación de datos bioinformáticos con dplyr y tidyr
+
+## 8.10.1
+
+Ejercicio 1. Identificación de genes candidatos
+
+Queremos explorar qué genes podrían estar relacionados con la respuesta bacteriana al estrés.
+
+Utilizando `dplyr`:
+
+Calcula el conteo promedio de cada gen en cada condición experimental.
+
+```{r}
+library(dplyr)
+estres <- read_csv("/home/ejimenez/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/expresion_genica_estres.csv")
+```
+
+```{r}
+promedios <- estres |>
+  group_by(gene_id, funcion, condicion) |>
+  summarise(conteo_promedio = mean(conteo), .groups = "drop")
+promedios
+```
+
+Organiza los resultados de manera que puedas comparar los promedios de Control y Estrés para cada gen.
+
+```{r}
+comparacion <- estres |>
+  group_by(gene_id, funcion) |>
+  summarise(
+    Control = mean(conteo[condicion == "Control"]),
+    Estres  = mean(conteo[condicion == "Estres"]),
+    .groups = "drop"
+  )
+comparacion
+```
+
+```{r}
+comparacion <- comparacion |>
+  mutate(razon = Estres / Control)
+```
+
+Calcula la razón entre el promedio en Estrés y el promedio en Control.
+
+```{r}
+comparacion <- comparacion |>
+  mutate(razon = `Estres` / Control)
+comparacion
+```
+
+Identifica los cinco genes con mayor aumento relativo y muestra su anotación funcional.
+
+```{r}
+top5 <- comparacion |>
+  arrange(desc(razon)) |>
+  slice_head(n = 5) |>
+  select(gene_id, funcion, Control, `Estres`, razon)
+top5
+```
+
+Pregunta de interpretación: ¿Un gen con un aumento relativo grande necesariamente presenta un conteo alto de lecturas? Justifica tu respuesta.
+
+No, no necesariamente porque el aumento es relativo a la otra condición. Por lo tanto, va a depender de la diferencia de magnitud entre condiciones. Si para un gen la control tiene 1 lectura, y en la condición de estrés hay 2 (lo que se ve representado en razón como 2.0) el aumento relativo va a ser similar a que se tengan 100 lecturas de la condición control y 200 de la condición de estrés; sin embargo, claramente vemos que en el segundo caso el número de lecturas fue mucho más alto que en el primero.
+
+## 8.10.3 (el que me tocó)
+
+TAREA. ¿Qué genes destacan dentro de cada muestra?
+
+En un experimento de expresión génica, algunos genes pueden presentar conteos considerablemente mayores que otros dentro de una misma muestra.
+
+Queremos identificar los genes cuyos conteos superan el promedio de su propia muestra.
+
+Utilizando `dplyr`:
+
+Calcula el conteo promedio de los genes en cada muestra.
+
+```{r}
+library(dplyr)
+estres |>
+  group_by(sample_id, condicion) |>
+  summarise(promedio_muestra = mean(conteo), .groups = "drop")
+```
+
+Agrega a la tabla original una columna llamada `promedio_muestra` que contenga ese promedio para cada observación, sin eliminar ninguna fila.
+
+```{r}
+estres_prom <- estres |>
+  group_by(sample_id) |>
+  mutate(promedio_muestra = mean(conteo)) |>
+  ungroup()
+estres_prom
+```
+
+Identifica los genes cuyo conteo sea al menos el doble del promedio de su muestra.
+
+```{r}
+destacados <- estres_prom |>
+  filter(conteo >= 2 * promedio_muestra) |>
+  select(sample_id, condicion, gene_id, funcion, conteo, promedio_muestra)
+destacados
+```
+
+Calcula cuántos genes cumplen esta condición en cada muestra y compara los resultados entre Control y Estrés.
+
+```{r}
+por_muestra <- estres_prom |>
+  group_by(sample_id, condicion) |>
+  summarise(n_destacados = sum(conteo >= 2 * promedio_muestra), .groups = "drop")
+por_muestra
+```
+
+Pregunta de interpretación: ¿Por qué es más adecuado comparar cada gen con el promedio de su propia muestra en lugar de utilizar un único promedio calculado con todas las muestras?
+
+Comparar cada gen con el promedio de su propia muestra es más adecuado porque las muestras no se secuencian con la misma profundidad. Una muestra que generó más lecturas en total tendrá conteos más altos en casi todos sus genes, aunque la expresión biológica sea la misma. Si usáramos un solo promedio calculado con todas las muestras, en las muestras con más lecturas muchos genes parecerían destacar solo por un sesgo técnico, mientras que en las muestras con menos lecturas casi ninguno superaría el umbral. Cuando se compara cada gen con el promedio de su propia muestra se está comparando con su propio contexto. De esta forma, la diferencia en el número de genes destacados entre Control y Estrés refleja mejor cómo se distribuye la expresión dentro de cada muestra, y no tanto cuántas lecturas se obtuvieron en cada una.
