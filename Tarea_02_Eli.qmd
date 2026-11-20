@@ -1,0 +1,61 @@
+---
+title: "Tarea_02_Eli"
+author: "Elizabeth Jiménez Meráz"
+format: pdf
+editor: visual
+---
+
+*Clase del 28 de agosto del 2026: Técnicas de secuenciación.*
+
+# Actividad 1:
+
+1.  Métodos de secuenciamiento:
+
+    Los métodos que hablamos/vimos en la clase fueron:
+
+    -   Sanger
+
+    -   Illunima
+
+    -   Ion Torrent
+
+    -   PacBio
+
+    -   Oxford Nanopore
+
+    1.  **Porcentaje de artículos sobre las técnicas de secuenciación:**
+
+        En Google académico investigamos la cantidad de artícculos relacionados a estas técnicas (solo por el nombre). Posteriormente calculamos el porcentaje de los artículos relacionados a cada una de las técnicas respecto al total.
+
+        La tabla siguiente resume nuestros resultados:
+
+        | Búsqueda en google académico | Cantidad de artículos encontrados | Porcentaje respecto al total |
+        |--------------------|--------------------------|--------------------------|
+        | "Sanger sequencing" | 624,000 | (41.9%) |
+        | "Ilumina sequencing" | 634,000 | (42.5%) |
+        | "Ion Torrent sequencing" | 66,000 | (4.4%) |
+        | "PacBio sequencing" | 78,000 | (5.2%) |
+        | "Oxford Nanopore sequencing" | 87,000 | (5.8%) |
+        | Total | 148900 | 100% |
+
+2.  **Actividad de tipos de secuenciamiento:**
+
+    Durante esta actividad exploramos los principios de la secuenciación Sanger e Illumina.
+
+    En la primera parte (sec. Sanger), lo que hicimos fue ordenar unos "nucleótidos" en diferentes secuencias, poniendo al final un didesoxinucleótido con un fluoróforo, lo que básicmanete le confiere dos características: ya no pueden agregar más nucleótidos después de ese (no tiene el 3'OH necesario para la reacción) y que ese nucleótido emite una longitud de onda específica y diferente para cada uno (ATGC) cuando se le incide un láser. Después nos explicaron que se hacía una PCR y su resultado era muchísimas secuencias de distinta ongitud, ordenándose en grupos, cada uno con un ddNTP en una de las posiciones de la secuencia. Al final todos estos se pasan por una electroforesis capilar y un láser va leyendo qué ddNTP pasa por el capilar.
+
+    Imagen de la actividad:
+
+    ![](images/WhatsApp Image 2026-09-03 at 9.58.10 PM.jpeg)
+
+    Para la parte de Illumina nos mostraron una celda de las que se usan para este tipo de secuenciación!! También hicimos igual distintas secuencias pero ahora con 3 dNTPs al final (que eran los adaptadores, osea los oligos que ayudarán a poder secuenciar distintas secuencias porque se forman clusters dentro de la misma celda). Vimos un video donde se explicaba que se basaba en PCR de puente y de identificar las secuencias igual con fluoróforos, muchas a la vez en la misma celda, como tomando una fotografía. Como se tienen las coordeadas de dónde está cada secuencia, solo necesitas saber de qué color se ve cada cluster (ya que cada base A,T,C,G tiene un color asociado). Imagen de la celda con la que se realiza la secuenciación illumina:
+
+    ![](images/WhatsApp Image 2026-09-03 at 9.58.11 PM.jpeg)
+
+# Actividad 2:
+
+1.  **Identificación de los valores de calidad de secuencias:**
+
+Esta fue la actividad (casi) final donde graficamos el promedio de el valor Q para cada posición de las 5 secuencias que se nos dieron.
+
+![](images/WhatsApp Image 2026-09-03 at 11.35.19 AM.jpeg){fig-align="center"}
