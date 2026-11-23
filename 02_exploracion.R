@@ -73,4 +73,4 @@ cat("¿metadata_secuencias tiene NA?:", anyNA(metadata), "\n")
 #
 # 3. Ninguna de las dos tablas presenta valores faltantes, según anyNA(). Además, 
 #    el archivo FASTA contiene 8 encabezados, número que coincide con los 8 query_id
-#    distintos de la tabla de BLAST.
+   distintos de la tabla de BLAST.

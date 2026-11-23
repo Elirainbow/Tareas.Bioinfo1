@@ -1,0 +1,116 @@
+---
+title: "Composición microbiana de la rizosfera"
+author: "Elizabeth Jiménez Meráz"
+date: today
+lang: es
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| eval: false
+#| label: fig-ejemplo
+#| fig-cap: "Ejemplo de una figura generada desde R"
+
+plot(1:5, (1:5)^2, pch = 19)
+```
+
+```{r}
+#| label: setup
+#| include: true
+#| message: false
+#| warning: false
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(paletteer)
+library(kableExtra)
+
+metadata_riz <- read_csv("data_raw/datos_rizosfera/metadata_rizosfera.csv")
+total_muestra <- read_tsv("results/total_muestra.tsv")
+generos_5 <- read_tsv("results/generos_5.tsv")
+filos_5 <- read_tsv("results/filos_5.tsv")
+
+```
+
+```{r}
+#| label: tbl-muestras-r
+
+resumen_hospederos <- metadata_riz %>% 
+  count(host_name, name = "numero_muestras") %>% 
+  arrange(desc(numero_muestras))
+
+knitr::kable(
+  resumen_hospederos,
+  col.names = c("Planta hospeddera", "Número de muestras"),
+  align = c("l", "c"),
+  caption = "número de muestras por planta hospedera"
+)
+  
+
+```
+
+```{r}
+#| label: tbl-hospederos-notas
+#| tbl-cap: "Distribución de muestras por planta hospedera"
+
+resumen_hospederos %>%
+  knitr::kable(
+    col.names = c("Planta hospedera", "Número de muestras"),
+    align = c("l", "c")
+  ) %>%
+  kableExtra::kable_styling(
+    full_width = FALSE,
+    position = "center"
+  ) %>%
+  kableExtra::footnote(
+    general = "Los conteos corresponden a las muestras disponibles en los metadatos.",
+    alphabet = c(
+      "La cantidad de muestras no necesariamente es igual entre plantas.",
+      "Las muestras pueden proceder de diferentes estudios."
+    ),
+    general_title = "Nota: "
+  )
+
+```
+
+```{r}
+#| label: fig-profundidad
+#| fig-cap: "Total de lecturas por muestra, según planta hospedera"
+#| fig-width: 10
+#| fig-height: 1
+
+profundidad <- totales_muestra %>%
+  left_join(
+    metadata_riz %>% select(sample_id, host_name),
+    by = "sample_id"
+  )
+
+ggplot(profundidad, aes(x = host_name, y = total_lecturas)) +
+  geom_boxplot(fill = "#5A9A91", alpha = 0.8) +
+  coord_flip() +
+  labs(
+    x = "Planta hospedera",
+    y = "Total de lecturas",
+    title = "Profundidad de lectura por planta"
+  ) +
+  theme_minimal()
+```
+
+Renderizar desde la terminal:
+
+```{bash}
+# quarto render reporte_rizosfera.qmd --to html
+
+#Para guardar en un documento el html
+# quarto render reporte_rizosfera.qmd --to html --output index.html --output-dir docs
+```
+
+Cómo compartir html s?

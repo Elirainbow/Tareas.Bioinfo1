@@ -1,0 +1,394 @@
+---
+title: "Clase1"
+author: "Eli Jiménez Meráz"
+date: 25-09-2026
+format:
+  pdf:
+    toc: true
+    toc-depth: 3
+editor: visual
+---
+
+# 2. Introducción a R
+
+## 2.11
+
+Intrucciones: Actividad: comprobar que el entorno está listo 1. Abre RStudio Desktop.
+
+2.  Ejecuta `R.version.string` y `Sys.info()[["sysname"]]`.
+
+```{r}
+R.version.string
+Sys.info()[["sysname"]]
+
+```
+
+2.  Comprueba que `ggplot2` y `dplyr` están instalados; si no lo están, instálalos desde CRAN.
+
+    ```{r}
+    "ggplot2" %in% rownames(installed.packages())
+    "dplyr" %in% rownames(installed.packages())
+
+    ```
+
+3.  Carga ambos paquetes y consulta sus versiones.
+
+    ```{r}
+    library(ggplot2)
+    library(dplyr)
+    packageVersion("ggplot2")
+    packageVersion("dplyr")
+    ```
+
+4.  Identifica las herramientas de compilación correspondientes a tu sistema operativo. En **Windows**, comprueba especialmente la compatibilidad de **Rtools**.
+
+    ```{bash}
+    uname -a
+    ```
+
+Linux sí es compatible con Rtools
+
+# 3. Objetos y estructuras de datos en R
+
+## 3.2.1
+
+Ejercicio 1. Vectores y selección
+
+Crea los vectores ids \<- c("g1", "g2", "g3", "g4", "g5") y tam \<- c(90, 450, 310, 120, 600).
+
+```{r}
+ids <- c("g1", "g2", "g3", "g4", "g5")
+tam <- c(90, 450, 310, 120, 600) 
+```
+
+1.  Selecciona el tercer identificador.
+
+```{r}
+
+ids[3]
+```
+
+2.  Recupera los identificadores de genes con longitud de al menos 300.
+
+```{r}
+ids[tam >= 300]
+```
+
+3.  Cuenta cuántos cumplen esa condición sin usar un ciclo.
+
+```{r}
+sum(tam >= 300)
+```
+
+## 3.2.4
+
+Ejercicio 2: Factores
+
+Crea una vector con las letras A M A B M M B A B B, donde A significa Alto, B bajo y M medio. Convierte las entradas del vector a factores y especifica que A \> M \> B.
+
+```{r}
+letras <- c("A", "M", "A", "B", "M", "M", "B", "A", "B", "B")
+letras2 <- factor(c("A", "M", "A", "B", "M", "M", "B", "A", "B", "B"), levels = c("A", "M", "B")) # siempre el que escribes primero es el que toma como el más grande y viceverza
+letras2
+
+```
+
+## 3.2.5
+
+Ejercicio 3: Elegir estructuras
+
+1.  Construye un data.frame con tres genes, sus longitudes y una etiqueta funcional.
+
+```{r}
+Ejercicio3.df <- data.frame(gen = c("g1", "g2", "g3"), 
+                         longitud = c(501, 100, 267), 
+                         funcion = c("enzima", "arnm", "arnr"))
+```
+
+2.  Recupera únicamente las filas con longitud mayor que 200.
+
+```{r}
+mayor200 <- Ejercicio3.df[Ejercicio3.df$longitud>200,]
+mayor200
+```
+
+3.  Crea una lista que contenga la tabla y el identificador de una muestra.
+
+```{r}
+Ejercicio3.ls <- list(muestra = "Muestra_1", genes = Ejercicio3.df)
+Ejercicio3.ls
+```
+
+4.  Explica por qué una matriz de caracteres no sería una buena sustitución para la tabla cuando queremos conservar longitudes numéricas.
+
+    Una matriz no sería la mejor opción porque solo conserva elementos del mismo tipo, y dado que en la tabla tenemos caracteres y numéricos, los numéricos (que en este caso representan la longitud del gen) se convertirían a caracteres. De esta forma ya no son útiles para hacer comparaciones y por ejemplo "filtrar" lo que son más grandes o pequeños que cierta cantidad.
+
+# 4. Estructuras de control
+
+## 4.1.1
+
+Ejercicio 1: Clasificación de un valor
+
+Define una variable conteo que represente el número de lecturas asignadas a un gen. Escribe un condicional que imprima:
+
+-   "Dato faltante" si el valor es NA.
+
+-   "Conteo inválido" si es negativo.
+
+-   "Sin lecturas" si es cero.
+
+-   "Con lecturas" si es positivo.
+
+Prueba tu código con NA, -2, 0 y 15.
+
+```{r}
+conteo <- NA
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ":  Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+
+conteo <- -2
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ":  Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+
+conteo <- 0
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ":  Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+
+conteo <- 15
+if (anyNA(conteo) == TRUE){
+  cat("Al probar con", conteo, ":  Dato faltante", "\n")
+} else if(conteo < 0) {
+  cat("Al probar con", conteo, ": conteo inválido", "\n")
+} else if (conteo == 0){
+  cat("Al probar con", conteo, ": sin lecturas", "\n")
+} else if (conteo > 0){
+  cat("Al probar con", conteo, ": con lecturas", "\n")
+}
+
+```
+
+## 4.1.2
+
+Ejercicio 2. Verificación de conteos
+
+Considera el vector conteos \<- c(8, 0, 13, 5, 0, 21). Utiliza las funciones anteriores para:
+
+1.  Verificar si todos los valores son no negativos.
+
+```{r}
+conteos <- c(8, 0, 13, 5, 0, 21)
+any(conteos == 0)
+```
+
+2.  Determinar si existe al menos un conteo mayor que 20.
+
+```{r}
+any(conteos > 20)
+```
+
+3.  Obtener las posiciones de los conteos iguales a cero.
+
+```{r}
+which(conteos == 0)
+```
+
+4.  Crear un vector que indique "Presente" o "Ausente" según si el conteo es mayor que cero.
+
+```{r}
+estado <- ifelse(conteos > 0, "Presente", "Ausente")
+estado
+```
+
+## 4.2.2
+
+Ejercicio 3. Longitudes de secuencias
+
+A partir del vector: Código
+
+```{r}
+secuencias <- c("ATG", "ATGCGT", "AATTCCGG", "CG")
+```
+
+1.  Utiliza un ciclo for para guardar las longitudes en un vector llamado longitudes.
+
+```{r}
+longitudes <- numeric(length(secuencias))
+for (i in seq_along(secuencias)){
+  longitudes[i] <- nchar(secuencias[i])
+}
+
+```
+
+2.  Crea otro vector llamado clasificacion que contenga "Corta" para longitudes menores que 5 y "Larga" para longitudes de al menos 5.
+
+```{r}
+clasif <- numeric(length(secuencias))
+
+for (i in seq_along(longitudes)){
+  if (longitudes[i] < 5){
+    clasif[i] <- "corta"
+    }
+    else if (longitudes[i] >= 5){
+      clasif[i] <- "larga"
+    }
+}
+```
+
+3.  Muestra ambos vectores.
+
+```{r}
+longitudes
+clasif
+```
+
+## 4.3.2
+
+Ejercicio 4. Alcanzar una longitud
+
+Imagina que estamos construyendo una secuencia mediante la adición de un nucleótido "A" en cada iteración. Escribe un ciclo while que comience con una cadena vacía y se detenga cuando la secuencia alcance 8 nucleótidos. Muestra el resultado final.
+
+```{r}
+cadena <- c("A")
+limite2 <- 8
+longitud <- length(cadena)
+
+while (longitud < limite2){
+  paste0(cadena, "A")
+  longitud = length(cadena)
+  print(cadena)
+}
+cadena
+```
+
+# 5. Funciones en R
+
+## 5.1.1
+
+Ejercicio 1: Función 1
+
+Escribe una función llamada empieza_con que reciba una secuencia y un prefijo, y determine si la secuencia comienza con ese prefijo. Pruébala con "ATGCGT" y los prefijos "ATG" y "TGA".
+
+## 5.3
+
+Ejercicio 2: Función 2
+
+Modifica resumir_adn() para que también devuelva la proporción de nucleótidos G y C respecto de la longitud total. Prueba la función con una secuencia no vacía.
+
+## 5.5
+
+Ejercicio 3: Función 3
+
+Crea una función llamada clasificar_secuencias que reciba un vector de secuencias y devuelva una lista con dos elementos:
+
+-   validas: las secuencias formadas únicamente por A, C, G y T.
+
+-   invalidas: las secuencias que contienen otros caracteres o valores faltantes.
+
+Utiliza la función revisar_secuencias() del ejemplo anterior.
+
+## 5.6
+
+Ejercicio 4
+
+Un archivo de secuencias ha sido representado en R mediante dos vectores: Código
+
+ids \<- c("seq_01", "seq_02", "seq_03", "seq_04") secuencias \<- c("ATGCGT", "ACNTGA", "GGCCAA", "TTTAAA")
+
+Escribe una función crear_reporte_secuencias(ids, secuencias) que:
+
+1.  Compruebe que ambos argumentos son vectores de caracteres y tienen la misma longitud.
+2.  Identifique las secuencias válidas mediante revisar_secuencias().
+3.  Devuelva un data.frame con las columnas id, secuencia, longitud y valida.
+4.  Asigne NA a la longitud de las secuencias inválidas.
+
+# 6. Scripts, paquetes y proyectos de RStudio
+
+## 6.5
+
+Ejercicio 1
+
+Considera el siguiente código, guardado en un archivo llamado revision.R: Código
+
+longitudes \<- nchar(secuencias) resultado \<- data.frame(id = ids, longitud = longitudes) print(resultado)
+
+Un estudiante afirma que el archivo funciona porque obtuvo una tabla al ejecutarlo en su computadora.
+
+1.  ¿Por qué podría fallar si otra persona abre el archivo y lo ejecuta desde una sesión nueva de R?
+2.  ¿Cómo se puede modificar el script para que pueda ejecutarse completo sin depender de objetos creados previamente en la consola?
+
+# 7. Importación y exploración de datos bioinformáticos en R
+
+## 7.3.2
+
+Ejercicio 1: Reconocer un archivo antes de importarlo
+
+Sin abrirlo en una hoja de cálculo, utiliza R para comprobar que existe blast_separador_incorrecto.csv, mostrar sus tres primeras líneas y determinar qué separador utiliza realmente.
+
+## 7.4.4
+
+Ejercicio 2: Elegir la función adecuada
+
+Importa metadata_secuencias.csv y blast_comentarios.tsv utilizando readr. Conserva codigo_muestra como texto. Comprueba la clase de cada objeto y muestra sus primeras filas.
+
+## 7.5.4
+
+Ejercicio 3: Explorar resultados tipo BLAST
+
+Con resultados_blast.tsv, responde mediante código:
+
+```         
+¿Cuántos registros y columnas tiene la tabla?
+¿Cuántos query_id diferentes aparecen?
+¿Cuántos resultados tiene cada consulta?
+¿Qué filas tienen pident mayor o igual a 95?
+¿Hay valores faltantes?
+```
+
+## 7.6.3
+
+Ejercicio 4: Detectar un problema de lectura
+
+Un estudiante importa blast_separador_incorrecto.csv con read_csv() y obtiene una sola columna. ¿Significa que el archivo contiene una única variable? Explica cómo comprobarlo y corrige la importación.
+
+## 7.7
+
+Ejercicio 5: Reconocer secuencias en FASTA
+
+Utiliza readLines() y grep() para identificar los encabezados de secuencias.fasta. ¿Cuántas entradas FASTA contiene el archivo? Muestra únicamente sus encabezados.
+
+## 7.8
+
+Ejercicio 6: De los archivos a una descripción de los datos
+
+Crea un script llamado 02_exploracion.R dentro de tu proyecto. El script debe:
+
+```         
+Comprobar que existen resultados_blast.tsv, metadata_secuencias.csv y secuencias.fasta.
+Importar las dos tablas con readr y conservar codigo_muestra como texto.
+Mostrar dimensiones, nombres y tipos de columnas.
+Identificar los query_id distintos y contar los resultados por consulta.
+Mostrar las filas con pident >= 90 y explicar qué representa este filtro.
+Leer el FASTA e indicar cuántos encabezados contiene.
+Mostrar si alguna de las tablas tiene valores faltantes.
+```
