@@ -1,0 +1,868 @@
+sample_id	filo	conteo
+Melli_21	Acidobacteriota	2179.0
+Melli_21	Actinomycetota	74632.0
+Melli_21	Aquificota	324.0
+Melli_21	Armatimonadota	238.0
+Melli_21	Atribacterota	19.0
+Melli_21	Bacillota	5957594.0
+Melli_21	Bacteroidota	68835.0
+Melli_21	Balneolota	117.0
+Melli_21	Bdellovibrionota	2286.0
+Melli_21	Caldisericota	1.0
+Melli_21	Calditrichota	9.0
+Melli_21	Campylobacterota	8703.0
+Melli_21	Candidatus Absconditibacteriota	5.0
+Melli_21	Candidatus Bipolaricaulota	1.0
+Melli_21	Candidatus Cloacimonadota	5.0
+Melli_21	Candidatus Fervidibacterota	283.0
+Melli_21	Candidatus Omnitrophota	179.0
+Melli_21	Candidatus Saccharibacteria	458.0
+Melli_21	Chlamydiota	389.0
+Melli_21	Chlorobiota	616.0
+Melli_21	Chloroflexota	964.0
+Melli_21	Chrysiogenota	7.0
+Melli_21	Coprothermobacterota	29.0
+Melli_21	Cyanobacteriota	15749.0
+Melli_21	Deferribacterota	327.0
+Melli_21	Deinococcota	1064.0
+Melli_21	Dictyoglomota	37.0
+Melli_21	Elusimicrobiota	22.0
+Melli_21	Fibrobacterota	4.0
+Melli_21	Fidelibacterota	3.0
+Melli_21	Fusobacteriota	3222.0
+Melli_21	Gemmatimonadota	198.0
+Melli_21	Ignavibacteriota	125.0
+Melli_21	Kiritimatiellota	146.0
+Melli_21	Lentisphaerota	16.0
+Melli_21	Mycoplasmatota	17285.0
+Melli_21	Myxococcota	2178.0
+Melli_21	Nitrospinota	4.0
+Melli_21	Nitrospirota	579.0
+Melli_21	Planctomycetota	4901.0
+Melli_21	Pseudomonadota	291865.0
+Melli_21	Rhodothermota	526.0
+Melli_21	Spirochaetota	6199.0
+Melli_21	Synergistota	167.0
+Melli_21	Thermodesulfobacteriota	6785.0
+Melli_21	Thermodesulfobiota	95.0
+Melli_21	Thermomicrobiota	7.0
+Melli_21	Thermosulfidibacterota	24.0
+Melli_21	Thermotogota	425.0
+Melli_21	Verrucomicrobiota	1223.0
+Melli_21	Vulcanimicrobiota	4.0
+Melli_22	Acidobacteriota	1648.0
+Melli_22	Actinomycetota	74515.0
+Melli_22	Aquificota	372.0
+Melli_22	Armatimonadota	330.0
+Melli_22	Atribacterota	24.0
+Melli_22	Bacillota	6233497.0
+Melli_22	Bacteroidota	88724.0
+Melli_22	Balneolota	151.0
+Melli_22	Bdellovibrionota	2708.0
+Melli_22	Caldisericota	5.0
+Melli_22	Calditrichota	40.0
+Melli_22	Campylobacterota	14276.0
+Melli_22	Candidatus Absconditibacteriota	19.0
+Melli_22	Candidatus Bipolaricaulota	0.0
+Melli_22	Candidatus Cloacimonadota	16.0
+Melli_22	Candidatus Fervidibacterota	111.0
+Melli_22	Candidatus Omnitrophota	78.0
+Melli_22	Candidatus Saccharibacteria	460.0
+Melli_22	Chlamydiota	575.0
+Melli_22	Chlorobiota	507.0
+Melli_22	Chloroflexota	907.0
+Melli_22	Chrysiogenota	7.0
+Melli_22	Coprothermobacterota	9.0
+Melli_22	Cyanobacteriota	16694.0
+Melli_22	Deferribacterota	698.0
+Melli_22	Deinococcota	1003.0
+Melli_22	Dictyoglomota	40.0
+Melli_22	Elusimicrobiota	465.0
+Melli_22	Fibrobacterota	3.0
+Melli_22	Fidelibacterota	10.0
+Melli_22	Fusobacteriota	3730.0
+Melli_22	Gemmatimonadota	130.0
+Melli_22	Ignavibacteriota	200.0
+Melli_22	Kiritimatiellota	157.0
+Melli_22	Lentisphaerota	42.0
+Melli_22	Mycoplasmatota	25846.0
+Melli_22	Myxococcota	1614.0
+Melli_22	Nitrospinota	17.0
+Melli_22	Nitrospirota	637.0
+Melli_22	Planctomycetota	5864.0
+Melli_22	Pseudomonadota	388144.0
+Melli_22	Rhodothermota	384.0
+Melli_22	Spirochaetota	8852.0
+Melli_22	Synergistota	205.0
+Melli_22	Thermodesulfobacteriota	7991.0
+Melli_22	Thermodesulfobiota	143.0
+Melli_22	Thermomicrobiota	8.0
+Melli_22	Thermosulfidibacterota	5.0
+Melli_22	Thermotogota	863.0
+Melli_22	Verrucomicrobiota	1643.0
+Melli_22	Vulcanimicrobiota	2.0
+Scapto_23	Acidobacteriota	1166.0
+Scapto_23	Actinomycetota	25232.0
+Scapto_23	Aquificota	119.0
+Scapto_23	Armatimonadota	21.0
+Scapto_23	Atribacterota	980.0
+Scapto_23	Bacillota	6949767.0
+Scapto_23	Bacteroidota	184898.0
+Scapto_23	Balneolota	473.0
+Scapto_23	Bdellovibrionota	4220.0
+Scapto_23	Caldisericota	351.0
+Scapto_23	Calditrichota	8.0
+Scapto_23	Campylobacterota	43610.0
+Scapto_23	Candidatus Absconditibacteriota	63.0
+Scapto_23	Candidatus Bipolaricaulota	0.0
+Scapto_23	Candidatus Cloacimonadota	59.0
+Scapto_23	Candidatus Fervidibacterota	78.0
+Scapto_23	Candidatus Omnitrophota	0.0
+Scapto_23	Candidatus Saccharibacteria	76.0
+Scapto_23	Chlamydiota	1512.0
+Scapto_23	Chlorobiota	362.0
+Scapto_23	Chloroflexota	656.0
+Scapto_23	Chrysiogenota	1.0
+Scapto_23	Coprothermobacterota	4.0
+Scapto_23	Cyanobacteriota	26691.0
+Scapto_23	Deferribacterota	835.0
+Scapto_23	Deinococcota	62.0
+Scapto_23	Dictyoglomota	10.0
+Scapto_23	Elusimicrobiota	930.0
+Scapto_23	Fibrobacterota	21.0
+Scapto_23	Fidelibacterota	91.0
+Scapto_23	Fusobacteriota	24265.0
+Scapto_23	Gemmatimonadota	2542.0
+Scapto_23	Ignavibacteriota	1473.0
+Scapto_23	Kiritimatiellota	6.0
+Scapto_23	Lentisphaerota	61.0
+Scapto_23	Mycoplasmatota	61434.0
+Scapto_23	Myxococcota	292.0
+Scapto_23	Nitrospinota	1.0
+Scapto_23	Nitrospirota	2472.0
+Scapto_23	Planctomycetota	2267.0
+Scapto_23	Pseudomonadota	366833.0
+Scapto_23	Rhodothermota	13.0
+Scapto_23	Spirochaetota	16489.0
+Scapto_23	Synergistota	299.0
+Scapto_23	Thermodesulfobacteriota	5398.0
+Scapto_23	Thermodesulfobiota	569.0
+Scapto_23	Thermomicrobiota	2.0
+Scapto_23	Thermosulfidibacterota	4.0
+Scapto_23	Thermotogota	2895.0
+Scapto_23	Verrucomicrobiota	2181.0
+Scapto_23	Vulcanimicrobiota	4.0
+Melli_39	Acidobacteriota	2492.0
+Melli_39	Actinomycetota	96798.0
+Melli_39	Aquificota	548.0
+Melli_39	Armatimonadota	431.0
+Melli_39	Atribacterota	31.0
+Melli_39	Bacillota	6688983.0
+Melli_39	Bacteroidota	86245.0
+Melli_39	Balneolota	146.0
+Melli_39	Bdellovibrionota	3116.0
+Melli_39	Caldisericota	5.0
+Melli_39	Calditrichota	42.0
+Melli_39	Campylobacterota	10132.0
+Melli_39	Candidatus Absconditibacteriota	7.0
+Melli_39	Candidatus Bipolaricaulota	13.0
+Melli_39	Candidatus Cloacimonadota	10.0
+Melli_39	Candidatus Fervidibacterota	428.0
+Melli_39	Candidatus Omnitrophota	26.0
+Melli_39	Candidatus Saccharibacteria	476.0
+Melli_39	Chlamydiota	450.0
+Melli_39	Chlorobiota	590.0
+Melli_39	Chloroflexota	973.0
+Melli_39	Chrysiogenota	45.0
+Melli_39	Coprothermobacterota	7.0
+Melli_39	Cyanobacteriota	39591.0
+Melli_39	Deferribacterota	661.0
+Melli_39	Deinococcota	1174.0
+Melli_39	Dictyoglomota	44.0
+Melli_39	Elusimicrobiota	66.0
+Melli_39	Fibrobacterota	1.0
+Melli_39	Fidelibacterota	2.0
+Melli_39	Fusobacteriota	3841.0
+Melli_39	Gemmatimonadota	402.0
+Melli_39	Ignavibacteriota	162.0
+Melli_39	Kiritimatiellota	97.0
+Melli_39	Lentisphaerota	27.0
+Melli_39	Mycoplasmatota	33585.0
+Melli_39	Myxococcota	2688.0
+Melli_39	Nitrospinota	10.0
+Melli_39	Nitrospirota	1057.0
+Melli_39	Planctomycetota	6702.0
+Melli_39	Pseudomonadota	605839.0
+Melli_39	Rhodothermota	590.0
+Melli_39	Spirochaetota	7572.0
+Melli_39	Synergistota	211.0
+Melli_39	Thermodesulfobacteriota	8562.0
+Melli_39	Thermodesulfobiota	128.0
+Melli_39	Thermomicrobiota	29.0
+Melli_39	Thermosulfidibacterota	28.0
+Melli_39	Thermotogota	520.0
+Melli_39	Verrucomicrobiota	1814.0
+Melli_39	Vulcanimicrobiota	13.0
+Melli_40	Acidobacteriota	1703.0
+Melli_40	Actinomycetota	60219.0
+Melli_40	Aquificota	244.0
+Melli_40	Armatimonadota	140.0
+Melli_40	Atribacterota	68.0
+Melli_40	Bacillota	4641858.0
+Melli_40	Bacteroidota	76119.0
+Melli_40	Balneolota	114.0
+Melli_40	Bdellovibrionota	2486.0
+Melli_40	Caldisericota	7.0
+Melli_40	Calditrichota	48.0
+Melli_40	Campylobacterota	11386.0
+Melli_40	Candidatus Absconditibacteriota	45.0
+Melli_40	Candidatus Bipolaricaulota	3.0
+Melli_40	Candidatus Cloacimonadota	12.0
+Melli_40	Candidatus Fervidibacterota	280.0
+Melli_40	Candidatus Omnitrophota	526.0
+Melli_40	Candidatus Saccharibacteria	399.0
+Melli_40	Chlamydiota	396.0
+Melli_40	Chlorobiota	899.0
+Melli_40	Chloroflexota	1323.0
+Melli_40	Chrysiogenota	22.0
+Melli_40	Coprothermobacterota	14.0
+Melli_40	Cyanobacteriota	15645.0
+Melli_40	Deferribacterota	434.0
+Melli_40	Deinococcota	513.0
+Melli_40	Dictyoglomota	65.0
+Melli_40	Elusimicrobiota	33.0
+Melli_40	Fibrobacterota	9.0
+Melli_40	Fidelibacterota	7.0
+Melli_40	Fusobacteriota	5145.0
+Melli_40	Gemmatimonadota	69.0
+Melli_40	Ignavibacteriota	123.0
+Melli_40	Kiritimatiellota	31.0
+Melli_40	Lentisphaerota	159.0
+Melli_40	Mycoplasmatota	25028.0
+Melli_40	Myxococcota	3942.0
+Melli_40	Nitrospinota	3.0
+Melli_40	Nitrospirota	380.0
+Melli_40	Planctomycetota	3639.0
+Melli_40	Pseudomonadota	328461.0
+Melli_40	Rhodothermota	470.0
+Melli_40	Spirochaetota	6894.0
+Melli_40	Synergistota	322.0
+Melli_40	Thermodesulfobacteriota	5442.0
+Melli_40	Thermodesulfobiota	131.0
+Melli_40	Thermomicrobiota	14.0
+Melli_40	Thermosulfidibacterota	54.0
+Melli_40	Thermotogota	975.0
+Melli_40	Verrucomicrobiota	1316.0
+Melli_40	Vulcanimicrobiota	6.0
+Melli_41	Acidobacteriota	1114.0
+Melli_41	Actinomycetota	44195.0
+Melli_41	Aquificota	232.0
+Melli_41	Armatimonadota	57.0
+Melli_41	Atribacterota	53.0
+Melli_41	Bacillota	3737060.0
+Melli_41	Bacteroidota	75426.0
+Melli_41	Balneolota	88.0
+Melli_41	Bdellovibrionota	2365.0
+Melli_41	Caldisericota	10.0
+Melli_41	Calditrichota	39.0
+Melli_41	Campylobacterota	12817.0
+Melli_41	Candidatus Absconditibacteriota	27.0
+Melli_41	Candidatus Bipolaricaulota	4.0
+Melli_41	Candidatus Cloacimonadota	57.0
+Melli_41	Candidatus Fervidibacterota	224.0
+Melli_41	Candidatus Omnitrophota	563.0
+Melli_41	Candidatus Saccharibacteria	313.0
+Melli_41	Chlamydiota	376.0
+Melli_41	Chlorobiota	374.0
+Melli_41	Chloroflexota	799.0
+Melli_41	Chrysiogenota	3.0
+Melli_41	Coprothermobacterota	5.0
+Melli_41	Cyanobacteriota	13688.0
+Melli_41	Deferribacterota	383.0
+Melli_41	Deinococcota	320.0
+Melli_41	Dictyoglomota	67.0
+Melli_41	Elusimicrobiota	51.0
+Melli_41	Fibrobacterota	10.0
+Melli_41	Fidelibacterota	8.0
+Melli_41	Fusobacteriota	5461.0
+Melli_41	Gemmatimonadota	142.0
+Melli_41	Ignavibacteriota	182.0
+Melli_41	Kiritimatiellota	30.0
+Melli_41	Lentisphaerota	130.0
+Melli_41	Mycoplasmatota	32468.0
+Melli_41	Myxococcota	1008.0
+Melli_41	Nitrospinota	5.0
+Melli_41	Nitrospirota	321.0
+Melli_41	Planctomycetota	2979.0
+Melli_41	Pseudomonadota	538288.0
+Melli_41	Rhodothermota	404.0
+Melli_41	Spirochaetota	5949.0
+Melli_41	Synergistota	168.0
+Melli_41	Thermodesulfobacteriota	4301.0
+Melli_41	Thermodesulfobiota	126.0
+Melli_41	Thermomicrobiota	8.0
+Melli_41	Thermosulfidibacterota	13.0
+Melli_41	Thermotogota	996.0
+Melli_41	Verrucomicrobiota	1251.0
+Melli_41	Vulcanimicrobiota	2.0
+Melli_42	Acidobacteriota	2106.0
+Melli_42	Actinomycetota	76406.0
+Melli_42	Aquificota	534.0
+Melli_42	Armatimonadota	529.0
+Melli_42	Atribacterota	100.0
+Melli_42	Bacillota	5228880.0
+Melli_42	Bacteroidota	84141.0
+Melli_42	Balneolota	218.0
+Melli_42	Bdellovibrionota	5545.0
+Melli_42	Caldisericota	20.0
+Melli_42	Calditrichota	14.0
+Melli_42	Campylobacterota	24753.0
+Melli_42	Candidatus Absconditibacteriota	17.0
+Melli_42	Candidatus Bipolaricaulota	0.0
+Melli_42	Candidatus Cloacimonadota	66.0
+Melli_42	Candidatus Fervidibacterota	62.0
+Melli_42	Candidatus Omnitrophota	204.0
+Melli_42	Candidatus Saccharibacteria	602.0
+Melli_42	Chlamydiota	340.0
+Melli_42	Chlorobiota	1262.0
+Melli_42	Chloroflexota	1413.0
+Melli_42	Chrysiogenota	6.0
+Melli_42	Coprothermobacterota	5.0
+Melli_42	Cyanobacteriota	17872.0
+Melli_42	Deferribacterota	373.0
+Melli_42	Deinococcota	617.0
+Melli_42	Dictyoglomota	35.0
+Melli_42	Elusimicrobiota	78.0
+Melli_42	Fibrobacterota	7.0
+Melli_42	Fidelibacterota	3.0
+Melli_42	Fusobacteriota	4471.0
+Melli_42	Gemmatimonadota	596.0
+Melli_42	Ignavibacteriota	318.0
+Melli_42	Kiritimatiellota	35.0
+Melli_42	Lentisphaerota	117.0
+Melli_42	Mycoplasmatota	29361.0
+Melli_42	Myxococcota	2140.0
+Melli_42	Nitrospinota	4.0
+Melli_42	Nitrospirota	391.0
+Melli_42	Planctomycetota	4038.0
+Melli_42	Pseudomonadota	711806.0
+Melli_42	Rhodothermota	400.0
+Melli_42	Spirochaetota	6679.0
+Melli_42	Synergistota	103.0
+Melli_42	Thermodesulfobacteriota	6266.0
+Melli_42	Thermodesulfobiota	120.0
+Melli_42	Thermomicrobiota	13.0
+Melli_42	Thermosulfidibacterota	10.0
+Melli_42	Thermotogota	511.0
+Melli_42	Verrucomicrobiota	2284.0
+Melli_42	Vulcanimicrobiota	4.0
+Scapto_43	Acidobacteriota	624.0
+Scapto_43	Actinomycetota	48816.0
+Scapto_43	Aquificota	200.0
+Scapto_43	Armatimonadota	48.0
+Scapto_43	Atribacterota	289.0
+Scapto_43	Bacillota	7512493.0
+Scapto_43	Bacteroidota	239485.0
+Scapto_43	Balneolota	147.0
+Scapto_43	Bdellovibrionota	2558.0
+Scapto_43	Caldisericota	736.0
+Scapto_43	Calditrichota	15.0
+Scapto_43	Campylobacterota	47732.0
+Scapto_43	Candidatus Absconditibacteriota	51.0
+Scapto_43	Candidatus Bipolaricaulota	1.0
+Scapto_43	Candidatus Cloacimonadota	47.0
+Scapto_43	Candidatus Fervidibacterota	200.0
+Scapto_43	Candidatus Omnitrophota	3.0
+Scapto_43	Candidatus Saccharibacteria	21.0
+Scapto_43	Chlamydiota	3048.0
+Scapto_43	Chlorobiota	753.0
+Scapto_43	Chloroflexota	585.0
+Scapto_43	Chrysiogenota	4.0
+Scapto_43	Coprothermobacterota	4.0
+Scapto_43	Cyanobacteriota	24814.0
+Scapto_43	Deferribacterota	1992.0
+Scapto_43	Deinococcota	187.0
+Scapto_43	Dictyoglomota	22.0
+Scapto_43	Elusimicrobiota	452.0
+Scapto_43	Fibrobacterota	53.0
+Scapto_43	Fidelibacterota	35.0
+Scapto_43	Fusobacteriota	35797.0
+Scapto_43	Gemmatimonadota	771.0
+Scapto_43	Ignavibacteriota	605.0
+Scapto_43	Kiritimatiellota	9.0
+Scapto_43	Lentisphaerota	43.0
+Scapto_43	Mycoplasmatota	84905.0
+Scapto_43	Myxococcota	884.0
+Scapto_43	Nitrospinota	2.0
+Scapto_43	Nitrospirota	5371.0
+Scapto_43	Planctomycetota	2453.0
+Scapto_43	Pseudomonadota	1257680.0
+Scapto_43	Rhodothermota	33.0
+Scapto_43	Spirochaetota	22429.0
+Scapto_43	Synergistota	508.0
+Scapto_43	Thermodesulfobacteriota	2834.0
+Scapto_43	Thermodesulfobiota	1281.0
+Scapto_43	Thermomicrobiota	7.0
+Scapto_43	Thermosulfidibacterota	1.0
+Scapto_43	Thermotogota	2681.0
+Scapto_43	Verrucomicrobiota	1112.0
+Scapto_43	Vulcanimicrobiota	11.0
+Melli_45	Acidobacteriota	2554.0
+Melli_45	Actinomycetota	69359.0
+Melli_45	Aquificota	340.0
+Melli_45	Armatimonadota	282.0
+Melli_45	Atribacterota	53.0
+Melli_45	Bacillota	6160409.0
+Melli_45	Bacteroidota	86851.0
+Melli_45	Balneolota	207.0
+Melli_45	Bdellovibrionota	2868.0
+Melli_45	Caldisericota	6.0
+Melli_45	Calditrichota	24.0
+Melli_45	Campylobacterota	22605.0
+Melli_45	Candidatus Absconditibacteriota	28.0
+Melli_45	Candidatus Bipolaricaulota	3.0
+Melli_45	Candidatus Cloacimonadota	21.0
+Melli_45	Candidatus Fervidibacterota	279.0
+Melli_45	Candidatus Omnitrophota	80.0
+Melli_45	Candidatus Saccharibacteria	636.0
+Melli_45	Chlamydiota	585.0
+Melli_45	Chlorobiota	684.0
+Melli_45	Chloroflexota	1148.0
+Melli_45	Chrysiogenota	9.0
+Melli_45	Coprothermobacterota	15.0
+Melli_45	Cyanobacteriota	17518.0
+Melli_45	Deferribacterota	393.0
+Melli_45	Deinococcota	881.0
+Melli_45	Dictyoglomota	66.0
+Melli_45	Elusimicrobiota	38.0
+Melli_45	Fibrobacterota	26.0
+Melli_45	Fidelibacterota	6.0
+Melli_45	Fusobacteriota	4625.0
+Melli_45	Gemmatimonadota	70.0
+Melli_45	Ignavibacteriota	142.0
+Melli_45	Kiritimatiellota	172.0
+Melli_45	Lentisphaerota	63.0
+Melli_45	Mycoplasmatota	19632.0
+Melli_45	Myxococcota	1602.0
+Melli_45	Nitrospinota	8.0
+Melli_45	Nitrospirota	601.0
+Melli_45	Planctomycetota	5274.0
+Melli_45	Pseudomonadota	315457.0
+Melli_45	Rhodothermota	505.0
+Melli_45	Spirochaetota	8140.0
+Melli_45	Synergistota	269.0
+Melli_45	Thermodesulfobacteriota	6511.0
+Melli_45	Thermodesulfobiota	246.0
+Melli_45	Thermomicrobiota	3.0
+Melli_45	Thermosulfidibacterota	18.0
+Melli_45	Thermotogota	668.0
+Melli_45	Verrucomicrobiota	1628.0
+Melli_45	Vulcanimicrobiota	11.0
+Melli_46	Acidobacteriota	1973.0
+Melli_46	Actinomycetota	97880.0
+Melli_46	Aquificota	255.0
+Melli_46	Armatimonadota	279.0
+Melli_46	Atribacterota	28.0
+Melli_46	Bacillota	5998268.0
+Melli_46	Bacteroidota	93731.0
+Melli_46	Balneolota	139.0
+Melli_46	Bdellovibrionota	2635.0
+Melli_46	Caldisericota	8.0
+Melli_46	Calditrichota	17.0
+Melli_46	Campylobacterota	60616.0
+Melli_46	Candidatus Absconditibacteriota	15.0
+Melli_46	Candidatus Bipolaricaulota	6.0
+Melli_46	Candidatus Cloacimonadota	27.0
+Melli_46	Candidatus Fervidibacterota	196.0
+Melli_46	Candidatus Omnitrophota	409.0
+Melli_46	Candidatus Saccharibacteria	544.0
+Melli_46	Chlamydiota	494.0
+Melli_46	Chlorobiota	484.0
+Melli_46	Chloroflexota	913.0
+Melli_46	Chrysiogenota	9.0
+Melli_46	Coprothermobacterota	9.0
+Melli_46	Cyanobacteriota	15234.0
+Melli_46	Deferribacterota	461.0
+Melli_46	Deinococcota	1512.0
+Melli_46	Dictyoglomota	51.0
+Melli_46	Elusimicrobiota	101.0
+Melli_46	Fibrobacterota	35.0
+Melli_46	Fidelibacterota	7.0
+Melli_46	Fusobacteriota	4922.0
+Melli_46	Gemmatimonadota	321.0
+Melli_46	Ignavibacteriota	95.0
+Melli_46	Kiritimatiellota	143.0
+Melli_46	Lentisphaerota	42.0
+Melli_46	Mycoplasmatota	19130.0
+Melli_46	Myxococcota	3076.0
+Melli_46	Nitrospinota	5.0
+Melli_46	Nitrospirota	605.0
+Melli_46	Planctomycetota	6182.0
+Melli_46	Pseudomonadota	584712.0
+Melli_46	Rhodothermota	371.0
+Melli_46	Spirochaetota	7525.0
+Melli_46	Synergistota	416.0
+Melli_46	Thermodesulfobacteriota	8672.0
+Melli_46	Thermodesulfobiota	142.0
+Melli_46	Thermomicrobiota	13.0
+Melli_46	Thermosulfidibacterota	8.0
+Melli_46	Thermotogota	705.0
+Melli_46	Verrucomicrobiota	2236.0
+Melli_46	Vulcanimicrobiota	18.0
+Melli_47	Acidobacteriota	3782.0
+Melli_47	Actinomycetota	101297.0
+Melli_47	Aquificota	306.0
+Melli_47	Armatimonadota	156.0
+Melli_47	Atribacterota	51.0
+Melli_47	Bacillota	5895805.0
+Melli_47	Bacteroidota	100947.0
+Melli_47	Balneolota	121.0
+Melli_47	Bdellovibrionota	4317.0
+Melli_47	Caldisericota	19.0
+Melli_47	Calditrichota	19.0
+Melli_47	Campylobacterota	48306.0
+Melli_47	Candidatus Absconditibacteriota	21.0
+Melli_47	Candidatus Bipolaricaulota	6.0
+Melli_47	Candidatus Cloacimonadota	55.0
+Melli_47	Candidatus Fervidibacterota	232.0
+Melli_47	Candidatus Omnitrophota	864.0
+Melli_47	Candidatus Saccharibacteria	1048.0
+Melli_47	Chlamydiota	643.0
+Melli_47	Chlorobiota	464.0
+Melli_47	Chloroflexota	1121.0
+Melli_47	Chrysiogenota	25.0
+Melli_47	Coprothermobacterota	10.0
+Melli_47	Cyanobacteriota	17656.0
+Melli_47	Deferribacterota	442.0
+Melli_47	Deinococcota	757.0
+Melli_47	Dictyoglomota	61.0
+Melli_47	Elusimicrobiota	82.0
+Melli_47	Fibrobacterota	184.0
+Melli_47	Fidelibacterota	13.0
+Melli_47	Fusobacteriota	6174.0
+Melli_47	Gemmatimonadota	569.0
+Melli_47	Ignavibacteriota	217.0
+Melli_47	Kiritimatiellota	127.0
+Melli_47	Lentisphaerota	36.0
+Melli_47	Mycoplasmatota	32589.0
+Melli_47	Myxococcota	2027.0
+Melli_47	Nitrospinota	18.0
+Melli_47	Nitrospirota	565.0
+Melli_47	Planctomycetota	5879.0
+Melli_47	Pseudomonadota	563891.0
+Melli_47	Rhodothermota	367.0
+Melli_47	Spirochaetota	8359.0
+Melli_47	Synergistota	392.0
+Melli_47	Thermodesulfobacteriota	8686.0
+Melli_47	Thermodesulfobiota	149.0
+Melli_47	Thermomicrobiota	20.0
+Melli_47	Thermosulfidibacterota	19.0
+Melli_47	Thermotogota	763.0
+Melli_47	Verrucomicrobiota	3487.0
+Melli_47	Vulcanimicrobiota	25.0
+Scapto_51	Acidobacteriota	1568.0
+Scapto_51	Actinomycetota	42991.0
+Scapto_51	Aquificota	133.0
+Scapto_51	Armatimonadota	100.0
+Scapto_51	Atribacterota	1190.0
+Scapto_51	Bacillota	7111388.0
+Scapto_51	Bacteroidota	187588.0
+Scapto_51	Balneolota	620.0
+Scapto_51	Bdellovibrionota	4527.0
+Scapto_51	Caldisericota	221.0
+Scapto_51	Calditrichota	12.0
+Scapto_51	Campylobacterota	43559.0
+Scapto_51	Candidatus Absconditibacteriota	90.0
+Scapto_51	Candidatus Bipolaricaulota	1.0
+Scapto_51	Candidatus Cloacimonadota	73.0
+Scapto_51	Candidatus Fervidibacterota	112.0
+Scapto_51	Candidatus Omnitrophota	2.0
+Scapto_51	Candidatus Saccharibacteria	77.0
+Scapto_51	Chlamydiota	1283.0
+Scapto_51	Chlorobiota	345.0
+Scapto_51	Chloroflexota	950.0
+Scapto_51	Chrysiogenota	3.0
+Scapto_51	Coprothermobacterota	1.0
+Scapto_51	Cyanobacteriota	29091.0
+Scapto_51	Deferribacterota	584.0
+Scapto_51	Deinococcota	133.0
+Scapto_51	Dictyoglomota	12.0
+Scapto_51	Elusimicrobiota	1025.0
+Scapto_51	Fibrobacterota	17.0
+Scapto_51	Fidelibacterota	116.0
+Scapto_51	Fusobacteriota	23264.0
+Scapto_51	Gemmatimonadota	3121.0
+Scapto_51	Ignavibacteriota	1674.0
+Scapto_51	Kiritimatiellota	4.0
+Scapto_51	Lentisphaerota	63.0
+Scapto_51	Mycoplasmatota	62839.0
+Scapto_51	Myxococcota	690.0
+Scapto_51	Nitrospinota	1.0
+Scapto_51	Nitrospirota	1676.0
+Scapto_51	Planctomycetota	2790.0
+Scapto_51	Pseudomonadota	536394.0
+Scapto_51	Rhodothermota	43.0
+Scapto_51	Spirochaetota	15773.0
+Scapto_51	Synergistota	186.0
+Scapto_51	Thermodesulfobacteriota	6266.0
+Scapto_51	Thermodesulfobiota	385.0
+Scapto_51	Thermomicrobiota	1.0
+Scapto_51	Thermosulfidibacterota	3.0
+Scapto_51	Thermotogota	3081.0
+Scapto_51	Verrucomicrobiota	2427.0
+Scapto_51	Vulcanimicrobiota	8.0
+Scapto_89	Acidobacteriota	1095.0
+Scapto_89	Actinomycetota	32903.0
+Scapto_89	Aquificota	200.0
+Scapto_89	Armatimonadota	15.0
+Scapto_89	Atribacterota	809.0
+Scapto_89	Bacillota	7084974.0
+Scapto_89	Bacteroidota	175713.0
+Scapto_89	Balneolota	402.0
+Scapto_89	Bdellovibrionota	3653.0
+Scapto_89	Caldisericota	326.0
+Scapto_89	Calditrichota	47.0
+Scapto_89	Campylobacterota	41192.0
+Scapto_89	Candidatus Absconditibacteriota	56.0
+Scapto_89	Candidatus Bipolaricaulota	1.0
+Scapto_89	Candidatus Cloacimonadota	58.0
+Scapto_89	Candidatus Fervidibacterota	122.0
+Scapto_89	Candidatus Omnitrophota	4.0
+Scapto_89	Candidatus Saccharibacteria	61.0
+Scapto_89	Chlamydiota	1640.0
+Scapto_89	Chlorobiota	557.0
+Scapto_89	Chloroflexota	1137.0
+Scapto_89	Chrysiogenota	4.0
+Scapto_89	Coprothermobacterota	4.0
+Scapto_89	Cyanobacteriota	26123.0
+Scapto_89	Deferribacterota	972.0
+Scapto_89	Deinococcota	172.0
+Scapto_89	Dictyoglomota	26.0
+Scapto_89	Elusimicrobiota	964.0
+Scapto_89	Fibrobacterota	36.0
+Scapto_89	Fidelibacterota	50.0
+Scapto_89	Fusobacteriota	21021.0
+Scapto_89	Gemmatimonadota	1661.0
+Scapto_89	Ignavibacteriota	1325.0
+Scapto_89	Kiritimatiellota	18.0
+Scapto_89	Lentisphaerota	34.0
+Scapto_89	Mycoplasmatota	57506.0
+Scapto_89	Myxococcota	394.0
+Scapto_89	Nitrospinota	3.0
+Scapto_89	Nitrospirota	2539.0
+Scapto_89	Planctomycetota	2685.0
+Scapto_89	Pseudomonadota	558534.0
+Scapto_89	Rhodothermota	36.0
+Scapto_89	Spirochaetota	14942.0
+Scapto_89	Synergistota	333.0
+Scapto_89	Thermodesulfobacteriota	4894.0
+Scapto_89	Thermodesulfobiota	516.0
+Scapto_89	Thermomicrobiota	8.0
+Scapto_89	Thermosulfidibacterota	1.0
+Scapto_89	Thermotogota	2671.0
+Scapto_89	Verrucomicrobiota	1907.0
+Scapto_89	Vulcanimicrobiota	6.0
+Scapto_90	Acidobacteriota	1566.0
+Scapto_90	Actinomycetota	41848.0
+Scapto_90	Aquificota	161.0
+Scapto_90	Armatimonadota	15.0
+Scapto_90	Atribacterota	1299.0
+Scapto_90	Bacillota	6499179.0
+Scapto_90	Bacteroidota	160375.0
+Scapto_90	Balneolota	703.0
+Scapto_90	Bdellovibrionota	4844.0
+Scapto_90	Caldisericota	22.0
+Scapto_90	Calditrichota	20.0
+Scapto_90	Campylobacterota	38207.0
+Scapto_90	Candidatus Absconditibacteriota	94.0
+Scapto_90	Candidatus Bipolaricaulota	1.0
+Scapto_90	Candidatus Cloacimonadota	91.0
+Scapto_90	Candidatus Fervidibacterota	149.0
+Scapto_90	Candidatus Omnitrophota	4.0
+Scapto_90	Candidatus Saccharibacteria	111.0
+Scapto_90	Chlamydiota	490.0
+Scapto_90	Chlorobiota	108.0
+Scapto_90	Chloroflexota	1145.0
+Scapto_90	Chrysiogenota	3.0
+Scapto_90	Coprothermobacterota	0.0
+Scapto_90	Cyanobacteriota	25405.0
+Scapto_90	Deferribacterota	95.0
+Scapto_90	Deinococcota	115.0
+Scapto_90	Dictyoglomota	23.0
+Scapto_90	Elusimicrobiota	1269.0
+Scapto_90	Fibrobacterota	33.0
+Scapto_90	Fidelibacterota	130.0
+Scapto_90	Fusobacteriota	16123.0
+Scapto_90	Gemmatimonadota	3328.0
+Scapto_90	Ignavibacteriota	1721.0
+Scapto_90	Kiritimatiellota	6.0
+Scapto_90	Lentisphaerota	37.0
+Scapto_90	Mycoplasmatota	46283.0
+Scapto_90	Myxococcota	433.0
+Scapto_90	Nitrospinota	4.0
+Scapto_90	Nitrospirota	332.0
+Scapto_90	Planctomycetota	2663.0
+Scapto_90	Pseudomonadota	526428.0
+Scapto_90	Rhodothermota	15.0
+Scapto_90	Spirochaetota	12381.0
+Scapto_90	Synergistota	66.0
+Scapto_90	Thermodesulfobacteriota	6651.0
+Scapto_90	Thermodesulfobiota	73.0
+Scapto_90	Thermomicrobiota	9.0
+Scapto_90	Thermosulfidibacterota	2.0
+Scapto_90	Thermotogota	3076.0
+Scapto_90	Verrucomicrobiota	3014.0
+Scapto_90	Vulcanimicrobiota	4.0
+Scapto_91	Acidobacteriota	1806.0
+Scapto_91	Actinomycetota	35868.0
+Scapto_91	Aquificota	285.0
+Scapto_91	Armatimonadota	15.0
+Scapto_91	Atribacterota	1395.0
+Scapto_91	Bacillota	7089987.0
+Scapto_91	Bacteroidota	179451.0
+Scapto_91	Balneolota	626.0
+Scapto_91	Bdellovibrionota	5287.0
+Scapto_91	Caldisericota	140.0
+Scapto_91	Calditrichota	30.0
+Scapto_91	Campylobacterota	46837.0
+Scapto_91	Candidatus Absconditibacteriota	80.0
+Scapto_91	Candidatus Bipolaricaulota	1.0
+Scapto_91	Candidatus Cloacimonadota	11.0
+Scapto_91	Candidatus Fervidibacterota	179.0
+Scapto_91	Candidatus Omnitrophota	2.0
+Scapto_91	Candidatus Saccharibacteria	44.0
+Scapto_91	Chlamydiota	866.0
+Scapto_91	Chlorobiota	316.0
+Scapto_91	Chloroflexota	1611.0
+Scapto_91	Chrysiogenota	0.0
+Scapto_91	Coprothermobacterota	1.0
+Scapto_91	Cyanobacteriota	29793.0
+Scapto_91	Deferribacterota	379.0
+Scapto_91	Deinococcota	122.0
+Scapto_91	Dictyoglomota	12.0
+Scapto_91	Elusimicrobiota	1288.0
+Scapto_91	Fibrobacterota	13.0
+Scapto_91	Fidelibacterota	55.0
+Scapto_91	Fusobacteriota	18552.0
+Scapto_91	Gemmatimonadota	3404.0
+Scapto_91	Ignavibacteriota	2112.0
+Scapto_91	Kiritimatiellota	5.0
+Scapto_91	Lentisphaerota	94.0
+Scapto_91	Mycoplasmatota	53393.0
+Scapto_91	Myxococcota	228.0
+Scapto_91	Nitrospinota	1.0
+Scapto_91	Nitrospirota	999.0
+Scapto_91	Planctomycetota	2801.0
+Scapto_91	Pseudomonadota	407964.0
+Scapto_91	Rhodothermota	35.0
+Scapto_91	Spirochaetota	12757.0
+Scapto_91	Synergistota	141.0
+Scapto_91	Thermodesulfobacteriota	7147.0
+Scapto_91	Thermodesulfobiota	238.0
+Scapto_91	Thermomicrobiota	1.0
+Scapto_91	Thermosulfidibacterota	0.0
+Scapto_91	Thermotogota	3221.0
+Scapto_91	Verrucomicrobiota	3078.0
+Scapto_91	Vulcanimicrobiota	5.0
+Scapto_92	Acidobacteriota	1643.0
+Scapto_92	Actinomycetota	63318.0
+Scapto_92	Aquificota	220.0
+Scapto_92	Armatimonadota	55.0
+Scapto_92	Atribacterota	673.0
+Scapto_92	Bacillota	5894121.0
+Scapto_92	Bacteroidota	122626.0
+Scapto_92	Balneolota	191.0
+Scapto_92	Bdellovibrionota	2955.0
+Scapto_92	Caldisericota	27.0
+Scapto_92	Calditrichota	21.0
+Scapto_92	Campylobacterota	40540.0
+Scapto_92	Candidatus Absconditibacteriota	46.0
+Scapto_92	Candidatus Bipolaricaulota	10.0
+Scapto_92	Candidatus Cloacimonadota	205.0
+Scapto_92	Candidatus Fervidibacterota	517.0
+Scapto_92	Candidatus Omnitrophota	1.0
+Scapto_92	Candidatus Saccharibacteria	47.0
+Scapto_92	Chlamydiota	1642.0
+Scapto_92	Chlorobiota	289.0
+Scapto_92	Chloroflexota	418.0
+Scapto_92	Chrysiogenota	18.0
+Scapto_92	Coprothermobacterota	6.0
+Scapto_92	Cyanobacteriota	21104.0
+Scapto_92	Deferribacterota	274.0
+Scapto_92	Deinococcota	720.0
+Scapto_92	Dictyoglomota	72.0
+Scapto_92	Elusimicrobiota	429.0
+Scapto_92	Fibrobacterota	83.0
+Scapto_92	Fidelibacterota	27.0
+Scapto_92	Fusobacteriota	12398.0
+Scapto_92	Gemmatimonadota	514.0
+Scapto_92	Ignavibacteriota	708.0
+Scapto_92	Kiritimatiellota	17.0
+Scapto_92	Lentisphaerota	43.0
+Scapto_92	Mycoplasmatota	102944.0
+Scapto_92	Myxococcota	1732.0
+Scapto_92	Nitrospinota	13.0
+Scapto_92	Nitrospirota	554.0
+Scapto_92	Planctomycetota	3315.0
+Scapto_92	Pseudomonadota	4903005.0
+Scapto_92	Rhodothermota	74.0
+Scapto_92	Spirochaetota	9012.0
+Scapto_92	Synergistota	146.0
+Scapto_92	Thermodesulfobacteriota	5849.0
+Scapto_92	Thermodesulfobiota	104.0
+Scapto_92	Thermomicrobiota	7.0
+Scapto_92	Thermosulfidibacterota	7.0
+Scapto_92	Thermotogota	1374.0
+Scapto_92	Verrucomicrobiota	1223.0
+Scapto_92	Vulcanimicrobiota	24.0
+Scapto_93	Acidobacteriota	1308.0
+Scapto_93	Actinomycetota	50181.0
+Scapto_93	Aquificota	180.0
+Scapto_93	Armatimonadota	39.0
+Scapto_93	Atribacterota	614.0
+Scapto_93	Bacillota	5838827.0
+Scapto_93	Bacteroidota	127263.0
+Scapto_93	Balneolota	271.0
+Scapto_93	Bdellovibrionota	2835.0
+Scapto_93	Caldisericota	105.0
+Scapto_93	Calditrichota	20.0
+Scapto_93	Campylobacterota	41162.0
+Scapto_93	Candidatus Absconditibacteriota	46.0
+Scapto_93	Candidatus Bipolaricaulota	7.0
+Scapto_93	Candidatus Cloacimonadota	249.0
+Scapto_93	Candidatus Fervidibacterota	410.0
+Scapto_93	Candidatus Omnitrophota	1.0
+Scapto_93	Candidatus Saccharibacteria	69.0
+Scapto_93	Chlamydiota	1456.0
+Scapto_93	Chlorobiota	252.0
+Scapto_93	Chloroflexota	406.0
+Scapto_93	Chrysiogenota	5.0
+Scapto_93	Coprothermobacterota	14.0
+Scapto_93	Cyanobacteriota	20467.0
+Scapto_93	Deferribacterota	334.0
+Scapto_93	Deinococcota	477.0
+Scapto_93	Dictyoglomota	58.0
+Scapto_93	Elusimicrobiota	483.0
+Scapto_93	Fibrobacterota	93.0
+Scapto_93	Fidelibacterota	28.0
+Scapto_93	Fusobacteriota	12227.0
+Scapto_93	Gemmatimonadota	530.0
+Scapto_93	Ignavibacteriota	806.0
+Scapto_93	Kiritimatiellota	3.0
+Scapto_93	Lentisphaerota	22.0
+Scapto_93	Mycoplasmatota	77002.0
+Scapto_93	Myxococcota	1319.0
+Scapto_93	Nitrospinota	5.0
+Scapto_93	Nitrospirota	1033.0
+Scapto_93	Planctomycetota	2815.0
+Scapto_93	Pseudomonadota	1364252.0
+Scapto_93	Rhodothermota	49.0
+Scapto_93	Spirochaetota	10126.0
+Scapto_93	Synergistota	144.0
+Scapto_93	Thermodesulfobacteriota	4683.0
+Scapto_93	Thermodesulfobiota	246.0
+Scapto_93	Thermomicrobiota	6.0
+Scapto_93	Thermosulfidibacterota	2.0
+Scapto_93	Thermotogota	1509.0
+Scapto_93	Verrucomicrobiota	1311.0
+Scapto_93	Vulcanimicrobiota	24.0

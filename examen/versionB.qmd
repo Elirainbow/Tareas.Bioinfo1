@@ -1,0 +1,200 @@
+---
+title: "Examen final de Introducción a R - Versión B"
+subtitle: "Bioinformática I — Versión B"
+author: "Elizabeth Jiménez"
+lang: es
+format:
+  html:
+    toc: true
+    code-fold: true
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+## Instrucciones generales
+
+**Duración: 120 minutos. Valor total: 100 puntos.**
+
+El objetivo es reproducir dos figuras a partir de datos reales de mieles de abejas sin aguijón.
+Los conteos proporcionados corresponden únicamente a bacterias con asignación taxonómica a nivel de filo.
+Se incluyen 17 muestras de dos especies de abejas.
+
+Trabaja en tu proyecto de RStudio y utiliza este documento como [plantilla](https://github.com/CursosENESJuriquilla/Intro_to_R_Bioinfo_2027-1/raw/refs/heads/main/versionB.qmd) Sustituye el nombre del autor por el tuyo.
+Agrega tus bloques de código R ejecutables y tus respuestas en las secciones correspondientes.
+Conserva las rutas relativas y muestra el procedimiento completo.
+Las figuras de referencia son una guía: no es necesario reproducir exactamente la tipografía ni los tamaños.
+
+```{r, warning=FALSE}
+rm(list = ls())
+#librerías
+library(readr)
+library(ggplot2)
+library(dplyr)
+```
+
+## Importación y exploración (10 puntos)
+
+Descarga y descomprime [datos_B.zip](https://github.com/CursosENESJuriquilla/Intro_to_R_Bioinfo_2027-1/raw/refs/heads/main/data/datos_B.zip).
+Importa con `readr` los archivos `datos/conteos_filo_miel_bacterias.tsv` y `datos/metadata_miel_examen.csv`.
+
+```{r, warning=FALSE}
+blast <- readr::read_tsv(
+      "data/conteos_filo_miel_bacterias.tsv",
+  show_col_types = FALSE
+)
+
+metadata <- readr::read_csv(
+  "data/metadata_miel_examen.csv",
+  col_types = readr::cols(codigo_muestra = readr::col_character()),
+  show_col_types = FALSE
+)
+
+dim(metadata)
+dim(blast)
+
+anyNA(metadata)
+colSums(is.na(metadata))
+
+metadata %>% 
+  count(species)
+```
+
+-   Indica las dimensiones de ambas tablas y el número de muestras por especie de abeja.
+
+En la tabla de metadata hay 17 filas y 14 columnas.
+
+En la tabla de blast hay 867 filas y 3 variables.
+
+El número de muestras por especie de abeja es: 9 muestras de la especie *Melipona beecheii* y 8 muestras de la especie *Scaptotrigona mexicana*.
+
+-   Identifica si existen valores faltantes en los metadatos e indica en qué variable o variables.
+    
+Sí existen valores faltantes en los metadatos, específicamente en la variable Total_sugar hay 2.
+
+## Integración y abundancia relativa (20 puntos)
+
+Integra las dos tablas mediante el identificador `sample_id`.
+Calcula la abundancia relativa de cada filo dentro de cada muestra, dividiendo su conteo entre la suma de los conteos de esa muestra.
+Conserva las abundancias como proporciones entre 0 y 1.
+
+```{r}
+blast_metadata <- blast %>%
+  left_join(metadata, by = "sample_id")
+head(blast_metadata)
+
+abundancias_filo <- blast_metadata %>%
+  group_by(sample_id, filo, species) %>%
+  summarise(conteo = sum(conteo), .groups = "drop") %>%
+  group_by(sample_id) %>%
+  mutate(abundancia_relativa = conteo / sum(conteo)) %>%
+  ungroup()
+
+abundancias_filo %>%
+  select(sample_id, filo, conteo, abundancia_relativa) %>%
+  head()
+
+```
+
+## Figura 1: los 10 filos más abundantes (25 puntos)
+
+Calcula la abundancia relativa promedio de cada filo considerando las 17 muestras, incluidos los conteos cero.
+Selecciona los diez con mayor promedio y reproduce la gráfica de barras horizontales ordenadas de mayor a menor.
+Muestra el eje de abundancia en porcentajes y agrega etiquetas apropiadas.
+
+```{r}
+abundancias_promedio <- abundancias_filo %>%
+  group_by(filo, abundancia_relativa, species) %>%
+  summarise(abundancia_total = sum(abundancia_relativa), .groups = "drop") %>%
+  group_by(filo, species) %>%
+  summarise(abundancias_promedio = sum(abundancia_relativa) / length(filo)) 
+
+filos_mayor_promedio <- head(sort_by(abundancias_promedio, ~ abundancias_promedio, decreasing = TRUE), 10)
+
+ggplot(filos_mayor_promedio, aes(x = abundancias_promedio * 100, y = reorder(filo, abundancias_promedio))) + 
+         geom_col(fill = "#367A90") +
+  labs(title = "10 filos bacterianos más abundantes en mieles de abeja",
+       x = "Abundancia relativa de cada filo de bacterias (%)", 
+       y = "Filos")
+         
+```
+
+## Figura 2: composición bacteriana por muestra (30 puntos)
+
+Utiliza las abundancias relativas del apartado 2, **no solamente los diez taxones de la figura anterior**.
+
+-   Dentro de cada muestra, agrupa los filos cuya abundancia relativa sea estrictamente menor al 5 % en la categoría `Filos < 5%`. Suma las abundancias de esa categoría.
+-   Construye una gráfica de barras apiladas, una barra por muestra, separando las especies de abejas mediante facetas. Cada barra debe sumar 100 %.
+-   Utiliza la paleta proporcionada y coloca la leyenda debajo de la gráfica.
+
+```{r}
+abundancias_clasificacion <- abundancias_filo %>% 
+  mutate(filo = ifelse(abundancia_relativa < 0.05,"Filos < 5%", filo))
+
+abundancias_agrupadas_5 <- abundancias_clasificacion %>%
+  group_by(sample_id, filo, species) %>%
+  summarise(
+    Abundancia_total_5 = sum(abundancia_relativa),
+    .groups = "drop" 
+  )
+
+phylum_colors_rel <- c(
+  "Bacillota" = "#0078A0",
+  "Pseudomonadota" = "#499878",
+  "Filos < 5%" = "#778899"
+)
+
+ggplot(abundancias_agrupadas_5,
+                  aes(x = sample_id, y = Abundancia_total_5, fill = filo)) + 
+  geom_col(width = 0.9) +
+  scale_fill_manual(values = phylum_colors_rel,
+                  breaks = unique(abundancias_agrupadas_5$filo)) +
+  scale_y_continuous(labels = function(x) paste0(round(100 * x), "%")) +
+  labs(title = "Composición taxonómica por filo y especie",
+       x = "Muestras", y = "Abundancia relativa", fill = "Filo") +
+  theme_minimal(base_size = 12) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 6),  legend.position = "bottom")+
+  facet_wrap(~ species, scales = "free_x")
+
+
+```
+
+Paleta de referencia (puedes copiarla en un bloque de R) o puedes usar otra paleta de colores:
+
+``` r
+phylum_colors_rel <- c(
+  "Bacillota" = "#0078A0",
+  "Pseudomonadota" = "#499878",
+  "Filos < 5%" = "#778899"
+)
+```
+
+## Interpretación (5 puntos)
+
+Responde brevemente con base en tus resultados:
+
+1.  ¿Cuál es el filo con mayor abundancia relativa promedio?
+    
+Es el filo Bacillota.
+
+2.  ¿Qué diferencias o similitudes observas en la composición de las muestras de las dos especies de abejas?
+    
+La principal similitud es que en todas las muestras el filo Bacillota tiene la mayor abundancia relativa (por eso la barras tienen una gran área azul), lo cual coincide con mi respuesta a la pregunta anterior y con la tabla 1, donde se observa cómo Bacillota tiene una abundancia relativa mayor por mucho.
+
+Otra similitud es que entre ambas especies está presente el filo Pseudomonadota, aunque una diferencia respecto a esto es que para la especie *Scaptotrigona mexicana*, la abundancia relativa de Pseudomonadota es observablemente mayor.
+
+Finalmente, es notable que las abundancias relativas no son iguales ni entre especies ni entre muestras de la misma especie, lo que puede permitirnos inferir que hay otros factores modificando estas abundancias, ya que incluso sabemos que las muestras vienen del mismo estudio y de ser procesadas con la misma metodología.
+
+**Nota**: Todas las muestras pertenecen al mismo estudio y fueron procesadas con la misma metodología.
+
+## Reporte reproducible y entrega (10 puntos)
+
+Renderiza el documento a HTML y sube a tu repositorio de GitHub el archivo `.qmd`, el HTML generado y las carpetas de datos y figuras necesarias.
+Verifica que el HTML muestre tus resultados y gráficas sin necesidad de ejecutar el código nuevamente.
+Entrega el enlace al repositorio.
+
+Si tienes un problema técnico con GitHub, conserva el `.qmd` y el HTML y notifícalo a la profesora antes de finalizar el examen.
