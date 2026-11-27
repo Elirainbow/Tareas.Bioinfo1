@@ -1,11 +1,13 @@
 ---
-title: "Tarea 1: Entrega de ejercicios de Introducción a R"
+title: "Tarea 1 mejorada: Entrega de ejercicios de Introducción a R"
 author: "Elizabeth Jiménez Meráz"
 format:
-  pdf:
+  html:
+    theme: [default, estilos.scss]
     toc: true
     toc-depth: 3
 editor: visual
+date: today
 ---
 
 # 2. Introducción a R
@@ -764,3 +766,306 @@ por_muestra
 Pregunta de interpretación: ¿Por qué es más adecuado comparar cada gen con el promedio de su propia muestra en lugar de utilizar un único promedio calculado con todas las muestras?
 
 Comparar cada gen con el promedio de su propia muestra es más adecuado porque las muestras no se secuencian con la misma profundidad. Una muestra que generó más lecturas en total tendrá conteos más altos en casi todos sus genes, aunque la expresión biológica sea la misma. Si usáramos un solo promedio calculado con todas las muestras, en las muestras con más lecturas muchos genes parecerían destacar solo por un sesgo técnico, mientras que en las muestras con menos lecturas casi ninguno superaría el umbral. Cuando se compara cada gen con el promedio de su propia muestra se está comparando con su propio contexto. De esta forma, la diferencia en el número de genes destacados entre Control y Estrés refleja mejor cómo se distribuye la expresión dentro de cada muestra, y no tanto cuántas lecturas se obtuvieron en cada una.
+
+# 9. Integración de datos y automatización de análisis en R
+
+```{r}
+library(dplyr)
+library(readr)
+library(tidyr)
+
+metadata_riz <- read_csv("/home/ejimenez/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_rizosfera/metadata_rizosfera.csv",
+                         show_col_types = FALSE)
+conteos <- read_tsv("/home/ejimenez/Documents/TercerSemestreLCGEJ/Bioinfo1/Intro_a_R/data_raw/datos_rizosfera/conteos_taxonomia_rizosfera.tsv",
+                    show_col_types = FALSE)
+
+metadata_riz %>%
+  count(host_name, sort = TRUE)
+
+niveles <- c("kingdom", "phylum", "class", "order", "family", "genus", "species")
+
+conteos_limpios <- conteos %>%
+  mutate(
+    across(
+      all_of(niveles),
+      ~na_if(sub("^[a-z]__", "", .x), "")
+    )
+  )
+
+ids_muestras <- metadata_riz$sample_id
+conteos_largos <- conteos_limpios %>%
+  pivot_longer(
+    cols = all_of(ids_muestras),
+    names_to = "sample_id",
+    values_to = "conteo"
+  )
+
+datos_riz <- conteos_largos %>%
+  left_join(
+    metadata_riz %>%
+      select(sample_id, host_name, country, year),
+    by = "sample_id",
+    relationship = "many-to-one"
+  )
+```
+
+## 9.8 Ejercicio 1
+
+Documentar la función.
+
+```{r}
+#' Descripción: La función 'preparar_abundancias' toma una base de datos,
+#' un nivel taxonómico y un umbral para clasificar la abundancia relativa.
+#' @param:
+#' tabla: la base de datos metagenómicos.
+#' nivel: nivel taxonómico con el que se quiere clasificar, los únicos válidos
+#' son "kingdom", "phylum", "class", "order", "family", "genus", "species".
+#' Por default = "genus".
+#' umbral: indica el mínimo valor de abundancia relativa para considerar
+#' ese taxón significativo. Por default = 0.05
+#' @return:
+#' La función devuelve una tabla donde por sample_id y host_name se agrupan los grupos que
+#' tienen una abundancia relativa mayor al umbral, junto con su abundancia relativa.
+#' @examples:
+#' preparar_abundancias(datos_riz, "phylum", 0.05)
+
+preparar_abundancias <- function(tabla, nivel = "genus", umbral = 0.05) {
+  # Declarar los niveles aceptados por la función
+  niveles_validos <- c(
+    "kingdom", "phylum", "class", "order",
+    "family", "genus", "species"
+  )
+  # Valida los argumentos dados a la función por el usuario
+  stopifnot(
+    nivel %in% niveles_validos,
+    is.numeric(umbral), length(umbral) == 1,
+    !is.na(umbral), umbral >= 0, umbral <= 1
+  )
+  # Declarar la etiqueta que se le asignará a los grupos que estén por abajo del umbral
+  etiqueta_otros <- if (nivel == "phylum") {
+    "Filos < 5%"
+  } else if (nivel == "genus") {
+    "Géneros < 5%"
+  } else {
+    "Taxones < 5%"
+  }
+  # Armar la tabla final donde se agrupen los que están por abajo del umbral
+  # por id de la muestra, taxón y nombre del host, y se le agregue la etiqueta
+  # a los taxones según si están por arriba del umbral o no.
+  tabla %>%
+    mutate(
+      taxon = .data[[nivel]],
+      taxon = if_else(is.na(taxon) | taxon == "",
+                      "Sin clasificar", taxon)
+    ) %>%
+    group_by(sample_id, host_name, taxon) %>%
+    summarise(conteo = sum(conteo), .groups = "drop") %>%
+    group_by(sample_id) %>%
+    mutate(abundancia_relativa = conteo / sum(conteo)) %>%
+    ungroup() %>%
+    mutate(
+      taxon_final = if_else(
+        abundancia_relativa < umbral,
+        etiqueta_otros,
+        taxon
+      )
+    ) %>%
+    group_by(sample_id, host_name, taxon_final) %>%
+    summarise(
+      abundancia_relativa = sum(abundancia_relativa),
+      .groups = "drop"
+    )
+}
+```
+
+## 9.8 Ejercicio 2
+
+Sin construir otra función, revisa `generos_5` y responde:
+
+```{r}
+generos_5 <- preparar_abundancias(datos_riz, "genus", 0.05)
+generos_5
+```
+
+¿Qué representa una fila de `generos_5`?
+
+Representa un género (o la categoría "Géneros \< 5%") dentro de una muestra, con su `sample_id`, su `host_name`, el nombre del taxón (`taxon_final`) y su abundancia relativa en esa muestra.
+
+¿Por qué un mismo género puede aparecer individualmente en una muestra y dentro de Otros en otra?
+
+Eso depende de su abundancia relativa en cada muestra. Si en una muestra es menor al 5%, se clasifica en "Géneros \< 5%", aunque en otra muestra supere ese umbral y aparezca con su propio nombre.
+
+Si construimos una gráfica de barras apiladas al 100 %, ¿cuánto deben sumar las abundancias relativas de cada muestra? Compruébalo con `group_by()` y `summarise()`.
+
+Deben sumar 1, ya que la abundancia relativa en este momento es una proporción, y ese 1 equivale al 100%.
+
+```{r}
+generos_5 %>%
+  group_by(sample_id) %>%
+  summarise(total = sum(abundancia_relativa), .groups = "drop")
+```
+
+¿Qué columna nos permite comparar las muestras según la planta hospedera? ¿De dónde proviene?
+
+La columna `host_name`. Se encontraba originalmente en la metadata (`metadata_riz`) y se agregó a los conteos con el `left_join()` que creó `datos_riz`.
+
+# 10. Construcción y exploración visual de datos bioinformáticos con ggplot2
+
+```{r}
+# librerías
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(tidyr)
+
+# Resultados procesados en la sesión anterior
+filos_5 <- preparar_abundancias(datos_riz, "phylum", 0.05)
+```
+
+## 10.12.1 Ejercicio 1
+
+Utilizando `generos_5` y `metadata_riz`:
+
+Identifica las plantas hospederas que tienen al menos 5 muestras.
+
+```{r}
+muestras_5 <- metadata_riz %>%
+  filter(sample_id %in% generos_5$sample_id) %>%
+  count(host_name, name = "total_muestras") %>%
+  filter(total_muestras >= 5) %>%
+  arrange(desc(total_muestras))
+
+print(muestras_5)
+```
+
+Conserva únicamente las muestras correspondientes a esas plantas.
+
+```{r}
+generos_5_filtrado <- generos_5 %>%
+  filter(host_name %in% muestras_5$host_name)
+```
+
+Construye una gráfica de barras apiladas de abundancia relativa por género con `ggplot2`, utilizando `facet_wrap()` para comparar las plantas hospederas.
+
+Personaliza la figura con una paleta de colores adecuada, etiquetas legibles y la categoría "Géneros \< 5%" al final de la leyenda.
+
+```{r}
+#| fig-width: 12
+#| fig-height: 10
+
+# Ordenar los géneros por abundancia total y dejar "Géneros < 5%" al final
+orden_generos <- generos_5_filtrado %>%
+  filter(taxon_final != "Géneros < 5%") %>%
+  group_by(taxon_final) %>%
+  summarise(total = sum(abundancia_relativa)) %>%
+  arrange(desc(total)) %>%
+  pull(taxon_final)
+
+niveles_gen <- c(orden_generos, "Géneros < 5%")
+
+# Un color distinto por género y gris para "Géneros < 5%"
+colores_gen <- setNames(
+  c(hcl.colors(length(orden_generos), palette = "Dark 3"), "grey75"),
+  niveles_gen
+)
+
+generos_5_filtrado <- generos_5_filtrado %>%
+  mutate(taxon_final = factor(taxon_final, levels = niveles_gen))
+
+# graficar
+ggplot(generos_5_filtrado,
+       aes(x = sample_id, y = abundancia_relativa, fill = taxon_final)) +
+  geom_col(width = 0.9) +
+  scale_fill_manual(values = colores_gen,
+                    breaks = niveles_gen) +
+  scale_y_continuous(breaks = c(0, 0.5, 1),
+                     labels = function(x) paste0(round(100 * x), "%"),
+                     expand = c(0, 0)) +
+  labs(title = "Composición taxonómica por género y planta hospedera",
+       x = "Muestras", y = "Abundancia relativa", fill = "Género") +
+  facet_wrap(~ host_name, scales = "free_x", ncol = 4) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.major.x = element_blank(),
+        strip.text = element_text(face = "bold"),
+        legend.position = "bottom") +
+  guides(fill = guide_legend(nrow = 3))
+```
+
+Para discutir: ¿Qué diferencias observas en la composición taxonómica entre las plantas? ¿Todas las muestras de una misma planta presentan composiciones similares?
+
+Las diferencias que observo entre la diversidad taxonómica de las plantas es que no todas están "gobernadas" por Pseudomonadota (es decir, que no ocupa la mayoría de la abundancia relativa). También, que no comparten entre ellas los mismos géneros.
+
+Observo que para la mayoría de las plantas la composición dentro de su categoría es similar pero con diferentes abundancias relativas, a excepción de Red pepper, maize y common bean, los cuales tienen 1 o 2 muestras cada uno que no coinciden con las demás.
+
+## 10.12.2 Ejercicio 2
+
+Utilizando `filos_5` y `metadata_riz`:
+
+Identifica los países que tienen al menos 5 muestras.
+
+```{r}
+paises_5 <- metadata_riz %>%
+  filter(sample_id %in% filos_5$sample_id) %>%
+  count(country, name = "total_muestras") %>%
+  filter(total_muestras >= 5) %>%
+  arrange(desc(total_muestras))
+
+print(paises_5)
+```
+
+Conserva únicamente las muestras correspondientes a esos países.
+
+```{r}
+filos_5_country <- filos_5 %>%
+  left_join(metadata_riz %>% select(sample_id, country), by = "sample_id") %>%
+  filter(country %in% paises_5$country)
+```
+
+Construye una gráfica de barras apiladas de abundancia relativa por filo con `ggplot2`, utilizando `facet_wrap()` para comparar los países.
+
+```{r}
+#| fig-width: 12
+#| fig-height: 10
+
+# graficar
+phylum_colors_rel <- c(
+  "Pseudomonadota"   = "#499878",
+  "Actinomycetota"   = "#E69F00",
+  "Bacillota"        = "#0078A0",
+  "Bacteroidota"     = "#CC79A7",
+  "Chordata"         = "#D55E00",
+  "Cressdnaviricota" = "#56B4E9",
+  "Gemmatimonadota"  = "#8C6D31",
+  "Filos < 5%"       = "#778899"
+)
+
+filos_5_country <- filos_5_country %>%
+  mutate(taxon_final = factor(taxon_final, levels = names(phylum_colors_rel)))
+
+ggplot(filos_5_country,
+       aes(x = sample_id, y = abundancia_relativa, fill = taxon_final)) +
+  geom_col(width = 0.9) +
+  scale_fill_manual(values = phylum_colors_rel,
+                    breaks = names(phylum_colors_rel)) +
+  scale_y_continuous(breaks = c(0, 0.5, 1),
+                     labels = function(x) paste0(round(100 * x), "%"),
+                     expand = c(0, 0)) +
+  labs(title = "Composición taxonómica por filo y país",
+       x = "Muestras", y = "Abundancia relativa", fill = "Filo") +
+  facet_wrap(~ country, scales = "free_x", ncol = 4) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.major.x = element_blank(),
+        strip.text = element_text(face = "bold"),
+        legend.position = "bottom") +
+  guides(fill = guide_legend(nrow = 2))
+```
+
+Para discutir: ¿Qué diferencias observas en la composición taxonómica entre los países? ¿Las muestras de un mismo país presentan composiciones similares?
+
+De igual forma observo que no todos están gobernados por Pseudomonadota, que no todos albergan a los mismos taxones y también que no todos tienen la misma cantidad de taxones en su composición. Finalmente, observo que entre las muestras de un mismo país la composición también varía.
